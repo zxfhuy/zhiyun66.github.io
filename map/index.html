@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线商户信息快查</title>
+    <meta name="keywords" content="获取最新地址请必应搜索关键词，智卓星网，更多精品资源请访问bss.zyzyw.cc">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0">
+    <!--程序更新地址 https://zhiyun123.wodemo.net/entry/537061 -->
+<link href="static/css/bootstrap.min-3.3.5.css" rel="stylesheet">
+    <link href="static/css/font-awesome.min-4.4.0.css" rel="stylesheet">
+	<link href="static/css/style.min-4.0.0.css" rel="stylesheet">
+    <link href="static/css/bootstrap-table.min.css" rel="stylesheet">
+	<link href="static/css/bootstrap-dark-table.min.css" rel="stylesheet">
+	<link type="text/css" href="static/css/style.css" rel="stylesheet">
+	<script src="static/js/vue.min.js"></script>
+	<script src="static/js/jquery.min-2.1.4.js"></script>
+    <script src="static/js/bootstrap.min-3.3.5.js"></script>
+	<script src="static/js/bootstrap-table.min.js"></script>
+    <script src="static/js/bootstrap-table-zh-cn.min.js"></script>
+	<script src="static/js/tableexport.min.js"></script>
+	<script src="static/js/area.js"></script>
+	
+	<script type="text/javascript">
+	var datas = [];
+	var dataNum = 0;
+	var dataNames = [];
+	var url = "https://map.baidu.com/?newmap=1&reqflag=pcmap&biz=1&from=webmap&da_par=direct&pcevaname=pc4.1&qt=spot&from=webmap&c={cityCode}&wd={keyWord}&wd2=&pn={pageNumber}&nn={startNumber}&db=0&sug=0&addr=0&&da_src=pcmappg.poi.page&on_gel=1&src=7&gr=3&l=12&rn=50&tn=B_NORMAL_MAP&ie=utf-8&t={time}";
+	Date.prototype.format = function (y) {
+		var z = {
+			M : this.getMonth() + 1,
+			d : this.getDate(),
+			h : this.getHours(),
+			m : this.getMinutes(),
+			s : this.getSeconds()
+		};
+		y = y.replace(/(M+|d+|h+|m+|s+)/g, function (v) {
+				return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1))).slice(-2);
+			});
+		var that = this;
+		return y.replace(/(y+)/g, function (v) {
+			return that.getFullYear().toString().slice(-v.length);
+		});
+	};
+	function setCityData(provinceId) {
+		$("#areaName").html("");
+		$(function () {
+			var url = "https://map.baidu.com/?newmap=1&reqflag=pcmap&biz=1&from=webmap&da_par=direct&pcevaname=pc4.1&qt=s&da_src=searchBox.button&wd=%E5%85%AC%E5%8F%B8&c={id}&src=0&wd2=&pn=0&sug=0";
+			url = url.replace("{id}", provinceId);
+			$.ajax({
+				url : url,
+				type : "get",
+				dataType : "jsonp",
+				success : function (data) {
+					var content = data["content"];
+					var more_city = data["more_city"][0]["city"];
+					if (content instanceof Array && content.length > 0) {
+						content.forEach(function (cityObj) {
+							$("<option></option>").val(cityObj["code"]).attr("geo", cityObj["geo"]).html(cityObj["name"]).appendTo($("#areaName"));
+						});
+					}
+					if (more_city instanceof Array && more_city.length > 0) {
+						more_city.forEach(function (cityObj) {
+							$("<option></option>").val(cityObj["code"]).attr("geo", cityObj["geo"]).html(cityObj["name"]).appendTo($("#areaName"));
+						});
+					}
+				}
+			})
+		});
+	}
+	function initProvinces() {
+		$(function () {
+			var url = "https://map.baidu.com/?newmap=1&reqflag=pcmap&biz=1&from=webmap&da_par=direct&pcevaname=pc4.1&qt=s&da_src=searchBox.button&wd=%E5%85%AC%E5%8F%B8&c=1&src=0&wd2=&pn=0&sug=0";
+			$.ajax({
+				url : url,
+				type : "get",
+				dataType : "jsonp",
+				success : function (data) {
+					var provinces = data["more_city"];
+					if (provinces instanceof Array && provinces.length > 0) {
+						provinces.forEach(function (dataObj) {
+							if (dataObj["province"] == "重庆市" || dataObj["province"] == "天津市" || dataObj["province"] == "香港特别行政区") {
+								$("<option></option>").val(dataObj["province_id"]).attr("geo", dataObj["city"][0]["geo"]).html(dataObj["province"]).appendTo($("#provinceName"));
+							} else {
+								$("<option></option>").val(dataObj["province_id"]).html(dataObj["province"]).appendTo($("#provinceName"));
+							}
+						});
+						if ($.inArray("北京市", provinces) == -1) {
+							$("<option></option>").val("131").attr("geo", "1|12959238.56,4825347.47;12959238.56,4825347.47|12959238.56,4825347.47;").html("北京市").appendTo($("#provinceName"));
+						}
+						if ($.inArray("上海市", provinces) == -1) {
+							$("<option></option>").val("289").attr("geo", "1|13523265.31,3641114.64;13523265.31,3641114.64|13523265.31,3641114.64;").html("上海市").appendTo($("#provinceName"));
+						}
+						//默认广东省
+						$("#provinceName").val('7');
+						setCityData("7");
+					}
+				}
+			})
+		});
+	}
+	function initEvent() {
+		$("#btnSearchData").click(function () {
+		  //  alert("请购买程序使用");
+		  //  return true;
+			var provinceName = $("#provinceName").find("option:selected").text();
+			var cityCode = "";
+			var cityName = "";
+			if (provinceName == "重庆市" || provinceName == "天津市" || provinceName == "香港特别行政区" || provinceName == "北京市" || provinceName == "上海市") {
+				cityCode = $("#provinceName").val();
+				cityName = provinceName;
+			} else {
+				cityCode = $("#areaName").val();
+				cityName = $("#areaName").find("option:selected").text();
+			}
+			var keyWord = $("#keyWord").val();
+			var number = parseInt($("#number").val());
+			number = number > 50 ? number : 50;
+			var len = number % 50 == 0 ? (number / 50) : (number / 50 + 1);
+			datas = [];
+			dataNum = 0;
+			if (cityCode && keyWord) {
+				for (var i = 1; i <= len; i++) {
+					getData(cityName, cityCode, keyWord, i, number);
+				}
+			} else {
+				alert("请输入关键字或选择城市");
+			}
+		});
+		$("#btnExportData").click(function () {
+		    	var provinceName = $("#provinceName").find("option:selected").text();
+		    	var cityName = $("#areaName").find("option:selected").text();
+		    	var keyWord = $("#keyWord").val();
+			var fileName = provinceName+"_"+cityName +"_"+keyWord;
+			$('#tableList').bootstrapTable('togglePagination');
+			$('#tableList').tableExport({
+				fileName : fileName,
+				type : 'csv',
+				ignoreColumn:[1,3,4]
+			});
+			$('#tableList').bootstrapTable('togglePagination');
+		});
+		$("#provinceName").change(function () {
+			var provinceName = $("#provinceName").find("option:selected").text();
+			if (provinceName == "重庆市" || provinceName == "天津市" || provinceName == "香港特别行政区" || provinceName == "北京市" || provinceName == "上海市") {
+				$("#areaName").html("");
+				return;
+			}
+			setCityData($(this).val());
+		});
+	}
+	function initTable() {
+		var height = document.body.clientHeight - 5;
+		var columns = [{
+				field : "name",
+				title : "名称",
+				align : "center"
+			}, {
+				field : "addr",
+				title : "地址",
+				align : "center"
+			}, {
+				field : "tel",
+				title : "电话",
+				align : "center"
+			}, {
+				field : "di_tag",
+				title : "标签",
+				align : "center"
+			}, {
+				field : "area_name",
+				title : "地区",
+				align : "center"
+			}
+		];
+		$("#tableList").bootstrapTable({
+			data : [],
+			striped : false,
+			height : height,
+			pageNumber : 1, //初始化加载第一页，默认第一页
+			pagination : true,
+			pageSize : 100, //每页的记录行数（*）
+			pageList : [10, 20, 50, 100],
+			exportDataType : 'all',
+			columns : columns
+		});
+	}
+	function getArea(cityName) {
+		var areaDatas = [];
+		var codes = [];
+		var code;
+		if (cityName == "香港特别行政区") {
+			areaDatas.push("香港特别行政区");
+			return areaDatas;
+		}
+		if (cityName == "澳门特别行政区") {
+			areaDatas.push("澳门特别行政区");
+			return areaDatas;
+		}
+		for (var i = 0; i < areas.length; i++) {
+			if (areas[i]["name"] == cityName) {
+				code = areas[i]["code"];
+				break;
+			}
+		}
+		if (cityName == "重庆市" || cityName == "天津市" || cityName == "北京市" || cityName == "上海市") {
+			for (var i = 0; i < areas.length; i++) {
+				if (areas[i]["parentCode"] == code) {
+					codes.push(areas[i]["code"]);
+				}
+			}
+			for (var i = 0; i < codes.length; i++) {
+				for (var j = 0; j < areas.length; j++) {
+					if (areas[j]["parentCode"] == codes[i]) {
+						areaDatas.push(areas[j]["name"]);
+					}
+				}
+			}
+		} else {
+			for (var i = 0; i < areas.length; i++) {
+				if (areas[i]["parentCode"] == code && areas[i]["name"] != "市辖区") {
+					areaDatas.push(areas[i]["name"]);
+				}
+			}
+		}
+		return areaDatas;
+	}
+	function getData(cityName, cityCode, keyWord, pageNumber, max) {
+		var areaDatas = getArea(cityName);
+		for (var j = 0; j < areaDatas.length; j++) {
+			var tempUrl = url;
+			var startNumber = (pageNumber - 1) * 50;
+			var tempkeyWord = areaDatas[j] + " " + keyWord;
+			console.log(tempkeyWord);
+			tempUrl = tempUrl.replace("{cityCode}", cityCode).replace("{keyWord}", tempkeyWord).replace("{pageNumber}", pageNumber).replace("{startNumber}", startNumber).replace("{time}", new Date().getTime());
+			$.ajax({
+				type : "get", //请求方式
+				async : true, //是否异步
+				url : tempUrl,
+				dataType : "jsonp", //跨域json请求一定是jsonp
+				success : function (data) {
+					//请求成功处理，和本地回调完全一样
+					var content = data["content"];
+					if (!content)
+						return;
+					for (var i = 0; i < content.length; i++) {
+					    var mytel = null;
+					    if(content[i]["tel"]&&content[i]["tel"]!=""){
+							    var stringResult = content[i]["tel"].split(',');
+							    if(stringResult.length>0){
+							        mytel = stringResult[0];
+							    }else{
+							       mytel = content[i]["tel"]; 
+							    }
+						}
+					    if($("#ismobile").prop("checked")==true&&content[i]["tel"]||$("#ismobile").prop("checked")==false&&$("#ismobile2").prop("checked")==false||$("#ismobile2").prop("checked")==true&&mytel&&mytel.length==11){
+						var obj = content[i];
+						var dataObj = {};
+						if (dataNum >= max) {
+							break;
+						}
+						if ($.inArray(obj["name"], dataNames) == -1) {
+							dataObj["name"] = obj["name"];
+							dataObj["addr"] = obj["addr"];
+							dataObj["tel"] = mytel;
+							dataObj["di_tag"] = obj["di_tag"];
+							dataObj["area_name"] = obj["area_name"];
+							dataNames.push(obj["name"]);
+							datas.push(dataObj);
+							dataNum++;
+						}
+						if (dataNum >= max) {
+							$("#tableList").bootstrapTable("load", datas);
+						} else if (content.length < 50) {
+							$("#tableList").bootstrapTable("load", datas);
+						}
+						
+					   }
+					}
+				},
+				complete : function () {
+					//请求完成的处理
+
+				},
+				error : function () {
+					//请求出错处理
+				}
+			});
+		}
+	}
+	$(function () {
+		initProvinces();
+		initTable();
+		initEvent();
+	});
+	
+	
+function isPhoneNumber(tel) {
+    var reg =/^[1][3,4,5,7,8,9][0-9]{9}$/;
+    return reg.test(tel);
+}
+	</script>
+	
+</head>
+<body class="fixed-full-screen" style="background-color: #00192E;">
+	<div class="col-sm-9">
+		<table id="tableList"></table>
+	</div>	
+    <div class="col-sm-3">
+		 <form role="form">
+			<div class="form-group">
+				<label style="color:white;">关键字</label>
+				<input type="text" class="form-control" id="keyWord">
+			</div>
+			<div class="form-group">
+				<label style="color:white;">省</label>
+				<select class="form-control m-b" id="provinceName">
+				</select>
+			</div>
+			<div class="form-group">
+				<label style="color:white;">地区</label>
+				<select class="form-control m-b" id="areaName">
+				</select>
+			</div>
+			<div class="form-group">
+				<label style="color:white;">数量</label>
+				<input type="text" class="form-control" id="number" value="5000">
+			</div>
+			<div class="form-group">
+				<label style="color:white;">只显示有电话的</label>
+				<input type="checkbox" id="ismobile">
+			</div>
+			<div class="form-group">
+				<label style="color:white;">只显示有手机号</label>
+				<input type="checkbox" id="ismobile2">
+			</div>
+			<div>
+				<button type="button" class="btn btn-primary" id="btnSearchData"><strong>查询数据</strong>
+				</button>
+				<button type="button" class="btn btn-primary" id="btnExportData" style="margin-left:20px;"><strong>导出数据</strong>
+				</button>
+			</div>
+			
+		</form>
+			<div id="clock" style="margin-top:368px">
+    <p class="date">{{ date }}</p>
+    <p class="time">{{ time }}</p>
+    <p class="text">信息来自网络公开大数据查询，未作真实性筛查</p>
+</div>
+	</div>
+		<script type="text/javascript">
+var clock = new Vue({
+    el: '#clock',
+    data: {
+        time: '',
+        date: ''
+    }
+});
+
+var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+var timerID = setInterval(updateTime, 1000);
+updateTime();
+function updateTime() {
+    var cd = new Date();
+    clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+    clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth()+1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+};
+
+function zeroPadding(num, digit) {
+    var zero = '';
+    for(var i = 0; i < digit; i++) {
+        zero += '0';
+    }
+    return (zero + num).slice(-digit);
+}
+</script>
+</div><div style="display: none">
+<script type="text/javascript" src="https://js.users.51.la/21354177.js"></script>
+    </div>
+</body>
+</html>
+
