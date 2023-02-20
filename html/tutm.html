@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线生成透明图片_调整图片透明度</title>
+  <link rel="stylesheet" href="//unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css">
+  <script src="//cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="//unpkg.com/element-ui@2.13.0/lib/index.js"></script>
+  <style>
+    body {
+      padding: 20px 50px;
+    }
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="indexSPA" v-cloak>
+    <h1>生成透明图片（调整图片透明度）</h1>
+    <h2>源图片：（最多选5张）</h2>
+    <el-upload
+      action="#"
+      accept="image/*"
+      list-type="picture-card"
+      :auto-upload="false"
+      :limit="5"
+      :multiple="true"
+      :on-change="onChange"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :file-list="files">
+      <i class="el-icon-plus"></i>
+    </el-upload>
+    <div style="display: flex; align-items: center; padding: 20px 0;">
+      <span>不透明度：</span>
+      <el-slider
+        style="width: 300px"
+        v-model="opacityValue"
+        step="0.1"
+        show-stops="true"
+        :min="0"
+        :max="1"
+        :marks="{0: '0', 1: '1'}"
+      ></el-slider>
+      <el-button type="primary" style="margin-left: 20px;" @click="make">生成</el-button>
+    </div>
+    <h2 v-show="result && result.length">结果：（请使用“右键-图片另存为”来下载）</h2>
+    <div>
+      <el-image
+        style="width: 150px;height: 150px;margin: 0 10px 10px 0;"
+        v-for="(item, index) in imageList"
+        :key="index"
+        :src="item"
+        :preview-src-list="imageList"
+        fit="contain"
+      ></el-image>
+    </div>
+    <el-dialog :visible.sync="dialogVisible">
+      <img width="100%" :src="dialogImageUrl" alt="">
+    </el-dialog>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#indexSPA",
+      data: {
+        files: [],
+        result: [],
+        opacityValue: 0.5, // 不透明度
+        dialogImageUrl: "",
+        dialogVisible: false,
+      },
+      computed: {
+        imageList({result}) {
+          // console.log('result', result)
+          // return result.map(item => item.url);
+          return result;
+        }
+      },
+      methods: {
+        handlePreview: function(file) {
+          this.dialogImageUrl = file.url;
+          this.dialogVisible = true;
+        },
+        handleRemove: function(fiel, fileList) {
+          console.log("fileList", fileList);
+          this.files = fileList;
+        },
+        // 不能在这时候撤销，不然会导致图片无法保存
+        // // 预览图片加载完要撤销URL的资源占用，释放内存
+        // handleImageLoaded: function(url) {
+        //   URL.revokeObjectURL(url);
+        // },
+
+        // 撤销URL的资源占用，释放内存。在清空结果前调用。
+        revokeUrls: function() {
+          for(var i = 0; i < this.result.length; i++) {
+            URL.revokeObjectURL(this.result[i]);
+          }
+        },
+        make: function() {
+          console.log("files", this.files)
+          if(!this.files || this.files.length <= 0) {
+            return this.$message.warning("请先添加源图片");
+          }
+
+          this.revokeUrls(); // 清空结果前撤销URL的资源占用
+          this.result = [];
+          for(var i = 0; i < this.files.length; i++) {
+            this.doTransfer(this.files[i], i);
+          }
+        },
+        doTransfer: function(file, index) {
+          var that = this;
+          console.log("file", file, index)
+          if(file && file.raw) {
+            var image = new Image();
+            image.onload = function() {
+              var img = this;
+              // console.log('图片宽高', this.width, this.height);
+
+              // 生成canvas元素
+              var canvas = document.createElement('canvas');
+              canvas.width = img.width;
+              canvas.height = img.height;
+
+              var ctx = canvas.getContext('2d', { alpha: true }); // 画布背景设置为透明
+              ctx.drawImage(img, 0, 0, img.width, img.height);
+              var imageData = ctx.getImageData(0, 0, img.width, img.height); // 获取画布的图片数据，用于进行像素操作
+              var data = imageData.data; // 像素数据
+              var opacityInt = parseInt(255 * that.opacityValue); // 把不透明度转换成像素的透明值
+              for(var i = 0; i < data.length; i+=4) {
+                // var r = data[i], g = data[i+1], b = data[i+2];
+                data[i+3] = opacityInt;
+              }
+              ctx.putImageData(imageData, 0, 0); // 将数据重新绘制到画布上
+
+              // 使用URL.createObjectURL()根据文件流生成URL。之后需要使用URL.revokeObjectURL()释放。
+              canvas.toBlob(function(blob){
+                var url = URL.createObjectURL(blob);
+                that.$set(that.result, index, url);
+                // console.log("result", index, url);
+              })
+
+              // 多选的时候大图片有可能会加载失败
+              // var imageUrl = canvas.toDataURL('png');
+              // // that.result[index] = imageUrl;
+              // that.$set(that.result, index, imageUrl);
+            }
+            // el-upload 组件打开的图片会有url，不需要再生成url
+            if(file.raw.url) {
+              image.src = file.raw.url;
+            } else {
+              var reader = new FileReader();
+              reader.readAsDataURL(file.raw);
+              reader.onload = function() {
+                image.src = this.result;
+              };
+            }
+          }
+        },
+        onChange: function(file, fileList) {
+          this.files = fileList;
+        },
+      }
+    })
+  </script>
+  <div style="display: none">
+<script type="text/javascript" src="https://js.users.51.la/21354177.js"></script>
+    </div>
+</body>
+</html>
