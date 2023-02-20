@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机号前三后四查询</title>
+    <style>
+        .button {
+            padding: .85rem 1rem;
+            margin: 0 1rem;
+            background-color: #1779ba;
+            color: #fefefe;
+            transition: background-color .25s ease-out, color .25s ease-out;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+        }
+
+        select {
+            border: 1px solid #cacaca;
+            padding: .5rem;
+            border-radius: .25rem;
+            width: 100%;
+        }
+
+        input {
+            display: block;
+            box-sizing: border-box;
+            padding: .5rem;
+            border: 1px solid #cacaca;
+            border-radius: .25rem;
+            width: 100%;
+        }
+
+        table {
+            display: table;
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 0;
+        }
+
+        table td {
+            padding: .5rem .625rem .625rem;
+            border-style: solid;
+            border-color: grey;
+            border-width: 0.5px
+        }
+
+        table tr:nth-child(odd) {
+            background: #f8f8f8;
+        }
+
+        table tr:nth-child(1) {
+            font-weight: 700;
+        }
+
+        .grid {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+        }
+
+        .cell-1 {
+            padding: .5rem;
+            width: calc(25% - 1rem);
+        }
+
+        .cell-2 {
+            width: calc(100% - 1rem);
+        }
+    </style>
+    <script>
+        var PhoneMAP = new Array();
+        var GenPhoneNumArgTemp = new Array();
+        function getCSV(url) {
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url, true);
+            xmlHttp.onreadystatechange = function callback() {
+                if (xmlHttp.readyState === 4) {
+                    if (xmlHttp.status === 200) {
+                        genArray(xmlHttp.responseText);
+                    }
+                }
+            };
+            xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+            xmlHttp.send(null);
+        }
+        function genArray(data) {
+            data.trim().split('\n').forEach(function (v, i) {
+                PhoneMAP.push(v.split(','))
+            })
+        }
+        function setCity(province, city) {
+            var i, ii;
+
+            var pv = province.value;
+
+            city.length = 1;
+
+            if (pv == '') {
+                return;
+            }
+            if (typeof (cities[pv]) == 'undefined') {
+                return;
+            }
+
+            for (i = 0; i < cities[pv].length; i++) {
+                ii = i + 1;
+                city.options[ii] = new Option();
+                city.options[ii].text = cities[pv][i];
+                city.options[ii].value = cities[pv][i];
+            }
+        }
+        try {
+            var cities = new Array();
+            cities["北京"] = new Array("北京");
+            cities["上海"] = new Array("上海");
+            cities["天津"] = new Array("天津");
+            cities["重庆"] = new Array("重庆", "黔江", "万州", "涪陵");
+            cities["河北"] = new Array("保定", "唐山", "秦皇岛", "廊坊", "沧州", "邢台", "邯郸", "衡水", "石家庄", "张家口", "承德", "雄安");
+            cities["山西"] = new Array("太原", "晋中", "运城", "临汾", "大同", "晋城", "长治", "忻州", "朔州", "吕梁", "阳泉");
+            cities["内蒙古"] = new Array("包头", "呼和浩特", "乌兰察布", "鄂尔多斯", "巴彦淖尔", "乌海", "海拉尔", "通辽", "赤峰", "兴安", "锡林郭勒", "阿拉善", "锡林浩特", "呼伦贝尔", "乌兰浩特", "临河", "集宁");
+            cities["辽宁"] = new Array("本溪", "营口", "大连", "沈阳", "辽阳", "阜新", "盘锦", "朝阳", "锦州", "铁岭", "丹东", "抚顺", "葫芦岛", "鞍山");
+            cities["吉林"] = new Array("长春", "四平", "辽源", "松原", "白城", "白山", "延边", "吉林", "通化", "梅河口", "延吉", "珲春");
+            cities["黑龙江"] = new Array("佳木斯", "哈尔滨", "齐齐哈尔", "牡丹江", "大庆", "绥化", "黑河", "鸡西", "七台河", "鹤岗", "双鸭山", "伊春", "大兴安岭");
+            cities["江苏"] = new Array("温州", "宁波", "嘉兴", "湖州", "舟山", "绍兴", "衢州", "金华", "台州", "丽水", "杭州");
+            cities["浙江"] = new Array("杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水");
+            cities["安徽"] = new Array("合肥", "蚌埠", "芜湖", "淮南", "阜阳", "马鞍山", "宣城", "安庆", "滁州", "池州", "黄山", "铜陵", "宿州", "六安", "淮北", "亳州");
+            cities["福建"] = new Array("福州", "莆田", "厦门", "漳州", "泉州", "三明", "宁德", "南平", "龙岩");
+            cities["江西"] = new Array("南昌", "鹰潭", "上饶", "宜春", "新余", "萍乡", "九江", "赣州", "景德镇", "吉安", "抚州");
+            cities["山东"] = new Array("济南", "淄博", "烟台", "潍坊", "滨州", "东营", "临沂", "日照", "枣庄", "威海", "青岛", "聊城", "德州", "泰安", "济宁", "菏泽");
+            cities["河南"] = new Array("郑州", "洛阳", "安阳", "开封", "焦作", "新乡", "许昌", "漯河", "平顶山", "济源", "濮阳", "三门峡", "鹤壁", "信阳", "驻马店", "周口", "商丘", "南阳");
+            cities["湖北"] = new Array("武汉", "荆门", "宜昌", "恩施", "黄石", "鄂州", "黄冈", "孝感", "随州", "襄阳", "十堰", "荆州", "仙桃", "咸宁", "江汉", "神农架", "潜江");
+            cities["湖南"] = new Array("岳阳", "长沙", "湘潭", "株洲", "衡阳", "郴州", "常德", "益阳", "娄底", "邵阳", "怀化", "张家界", "永州", "吉首", "湘西");
+            cities["广东"] = new Array("广州", "汕头", "汕尾", "揭阳", "梅州", "河源", "潮州", "清远", "韶关", "云浮", "深圳", "中山", "肇庆", "湛江", "阳江", "茂名", "珠海", "惠州", "江门", "佛山", "东莞");
+            cities["广西"] = new Array("南宁", "柳州", "桂林", "玉林", "梧州", "北海", "防城港", "百色", "钦州", "河池", "贵港", "贺州", "来宾", "崇左");
+            cities["海南"] = new Array("海口", "三亚");
+            cities["四川"] = new Array("宜宾", "自贡", "西昌", "攀枝花", "南充", "遂宁", "达州", "泸州", "内江", "乐山", "眉山", "德阳", "广元", "绵阳", "成都", "资阳", "甘孜", "阿坝", "巴中", "广安", "雅安", "凉山", "达川", "康定");
+            cities["贵州"] = new Array("贵阳", "遵义", "安顺", "铜仁", "黔东南", "黔南", "六盘水", "黔西南", "毕节", "都匀", "凯里", "兴义");
+            cities["云南"] = new Array("红河", "楚雄", "曲靖", "玉溪", "昆明", "大理", "丽江", "文山", "普洱", "保山", "临沧", "怒江", "德宏", "西双版纳", "迪庆", "昭通", "思茅");
+            cities["西藏"] = new Array("拉萨", "日喀则", "山南", "林芝", "昌都", "那曲", "阿里");
+            cities["陕西"] = new Array("西安", "渭南", "咸阳", "汉中", "宝鸡", "铜川", "延安", "榆林", "商洛", "安康", "商州");
+            cities["甘肃"] = new Array("兰州", "嘉峪关", "张掖", "武威", "白银", "酒泉", "定西", "临夏", "庆阳", "天水", "平凉", "甘南", "陇南", "金昌");
+            cities["宁夏"] = new Array("石嘴山", "吴忠", "固原", "银川", "中卫");
+            cities["青海"] = new Array("格尔木", "西宁", "海东", "海南", "海北", "海西", "玉树", "果洛", "黄南", "海晏", "共和", "德令哈");
+            cities["新疆"] = new Array("乌鲁木齐", "昌吉", "石河子", "库尔勒", "喀什", "吐鲁番", "哈密", "阿克苏", "奎屯", "博乐", "伊犁", "克拉玛依", "克孜勒苏", "和田", "塔城", "阿勒泰", "巴音郭楞", "博尔塔拉");
+        } catch (e) {
+            alert(e);
+        }
+        function searchAreaCode(foreNum, province, city) {
+            var areaCodes = new Array();
+            var ISPNames = new Array();
+            var provincesName = new Array();
+            var citiesName = new Array();
+
+            if (city == '' && province != '') {
+                PhoneMAP.forEach(function (v, i) {
+                    if (foreNum == v[0].substr(0, 3) && province == v[1]) {
+                        areaCodes.push(v[0].substr(3, 4));
+                        if (citiesName.length < 10) {
+                            ISPNames.push(v[3]);
+                            citiesName.push(v[2]);
+                        }
+                    }
+                })
+            } else if (city == '' && province == '') {
+                PhoneMAP.forEach(function (v, i) {
+                    if (foreNum == v[0].substr(0, 3)) {
+                        areaCodes.push(v[0].substr(3, 4));
+                        if (citiesName.length < 10) {
+                            ISPNames.push(v[3]);
+                            provincesName.push(v[1]);
+                            citiesName.push(v[2]);
+                        }
+                    }
+                })
+            } else {
+                PhoneMAP.forEach(function (v, i) {
+                    if (foreNum == v[0].substr(0, 3) && province == v[1] && city == v[2]) {
+                        areaCodes.push(v[0].substr(3, 4));
+                        if (citiesName.length < 10) {
+                            ISPNames.push(v[3]);
+                        }
+                    }
+                })
+            }
+            return [areaCodes, ISPNames, provincesName, citiesName];
+        }
+        function search() {
+            var foreNum = document.forms.info.foreNum.value;
+            var province = document.forms.info.province.value;
+            var city = document.forms.info.city.value;
+            var backNum = document.forms.info.backNum.value;
+
+            result = searchAreaCode(foreNum, province, city);
+            areaCodes = result[0];
+
+            totalNum = areaCodes.length * 10 ** (4 - backNum.toString().length);
+
+            preview(totalNum, genPhoneNum(foreNum, areaCodes, backNum, true), result[1], result[2], result[3]);
+            GenPhoneNumArgTemp = Array();
+            GenPhoneNumArgTemp.push(foreNum);
+            GenPhoneNumArgTemp.push(areaCodes);
+            GenPhoneNumArgTemp.push(backNum);
+        }
+        function genPhoneNum(foreNum, areaCodes, backNum, preview = false) {
+            var result = new Array();
+
+            placeholderDigit = 4 - backNum.toString().length;
+            for (var i = 0; i < areaCodes.length; i++) {
+                for (var j = 0; j < 10 ** placeholderDigit; j++) {
+                    placeholder = placeholderDigit==0 ? "" : (Array(placeholderDigit).join('0') + j).slice(-placeholderDigit);
+                    result.push([foreNum + areaCodes[i] + placeholder + backNum, i]);
+                    if (preview && result.length == 10) return result;
+                }
+            }
+            return result;
+        }
+        function preview(totalNum, phoneNum, ISPNames, provinces, cities) {
+            var lastResult = document.getElementById("result");
+            if (lastResult != null) {
+                document.getElementById("grid").removeChild(lastResult);
+            }
+
+            var element = document.createElement('div');
+            element.setAttribute('class', 'cell-2');
+            element.setAttribute('id', 'result');
+
+            var text = document.createElement('div');
+            text.setAttribute('style', 'margin-bottom: 15px;')
+            text.innerHTML = "<p>号码总数：<b>" + totalNum + "</b> 个，以下仅展示 <span>" + Math.min(10, totalNum) + "</span> 个</p>"
+            element.appendChild(text);
+            document.body.appendChild(element);
+
+            table = document.createElement("table");
+            tBody = document.createElement("tBody");
+
+            tr = tBody.insertRow(0);
+
+            td = tr.insertCell(0);
+            td.innerHTML = "序号";
+
+            td = tr.insertCell(1);
+            td.innerHTML = "手机号码";
+
+            td = tr.insertCell(2);
+            td.innerHTML = "运营商";
+
+            td = tr.insertCell(3);
+            td.innerHTML = "省份";
+
+            td = tr.insertCell(4);
+            td.innerHTML = "城市";
+
+            for (var i = 1; i < Math.min(10, totalNum) + 1; i++) {
+                tr = tBody.insertRow(i);
+
+                td = tr.insertCell(0);
+                td.innerHTML = i.toString();
+
+                td = tr.insertCell(1);
+                td.innerHTML = phoneNum[i - 1][0];
+
+                td = tr.insertCell(2);
+                td.innerHTML = ISPNames[phoneNum[i - 1][1]];
+
+                td = tr.insertCell(3);
+                if (document.forms.info.province.value == '') {
+                    td.innerHTML = provinces[phoneNum[i - 1][1]];
+                } else {
+                    td.innerHTML = document.forms.info.province.value;
+                }
+
+                td = tr.insertCell(4);
+                if (document.forms.info.city.value == '') {
+                    td.innerHTML = cities[phoneNum[i - 1][1]];
+                } else {
+                    td.innerHTML = document.forms.info.city.value;
+                }
+            }
+            table.appendChild(tBody);
+            element.appendChild(table);
+
+            var buttons = document.createElement('div');
+            buttons.setAttribute('style', 'margin-top: 15px; margin-bottom: 15px; text-align: center;');
+            buttons.innerHTML = "<button class=\"button\" onclick=\"exportTXT()\">导出 TXT</button><button class=\"button\" onclick=\"exportVCF()\">导出 VCF</button>";
+            element.appendChild(buttons);
+
+            document.getElementById("grid").appendChild(element);
+        }
+        function exportVCF() {
+            filename = "download.vcf";
+            var text = "";
+            genPhoneNum(GenPhoneNumArgTemp[0], GenPhoneNumArgTemp[1], GenPhoneNumArgTemp[2]).forEach(function (v, i) {
+                var temp = "BEGIN:VCARD\nN;CHARSET=UTF-8:ESU" + i + "\nFN;CHARSET=UTF-8:ESU" + i + "\nTEL;TYPE=CELL:" + v[0] + "\nEND:VCARD\n";
+                text = text + temp;
+            });
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+        function exportTXT() {
+            filename = "download.txt";
+            var text = "";
+            genPhoneNum(GenPhoneNumArgTemp[0], GenPhoneNumArgTemp[1], GenPhoneNumArgTemp[2]).forEach(function (v, i) {
+                if (i==0){
+                    text = text + v[0];
+                }
+                text = text + "\n" + v[0];
+            });
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+        getCSV("./phonetmp.csv");
+
+    </script>
+</head>
+<div style="margin-top: 15px; text-align: center;">
+    <h1>手机号前三后四查询</h1>
+</div>
+<form name="info" onsubmit="return false" method="get">
+    <div class="grid" id="grid">
+        <div class="cell-1">
+            <label for="">
+                号段：
+                <select name="foreNum">
+                    <option value="130">130</option>
+                    <option value="131">131</option>
+                    <option value="132">132</option>
+                    <option value="133">133</option>
+                    <option value="134">134</option>
+                    <option value="135">135</option>
+                    <option value="136">136</option>
+                    <option value="137">137</option>
+                    <option value="138">138</option>
+                    <option value="139">139</option>
+                    <option value="141">141</option>
+                    <option value="145">145</option>
+                    <option value="146">146</option>
+                    <option value="147">147</option>
+                    <option value="148">148</option>
+                    <option value="149">149</option>
+                    <option value="150">150</option>
+                    <option value="151">151</option>
+                    <option value="152">152</option>
+                    <option value="153">153</option>
+                    <option value="154">154</option>
+                    <option value="155">155</option>
+                    <option value="156">156</option>
+                    <option value="157">157</option>
+                    <option value="158">158</option>
+                    <option value="159">159</option>
+                    <option value="160">160</option>
+                    <option value="162">162</option>
+                    <option value="165">165</option>
+                    <option value="166">166</option>
+                    <option value="167">167</option>
+                    <option value="170">170</option>
+                    <option value="171">171</option>
+                    <option value="172">172</option>
+                    <option value="173">173</option>
+                    <option value="174">174</option>
+                    <option value="175">175</option>
+                    <option value="176">176</option>
+                    <option value="177">177</option>
+                    <option value="178">178</option>
+                    <option value="180">180</option>
+                    <option value="181">181</option>
+                    <option value="182">182</option>
+                    <option value="183">183</option>
+                    <option value="184">184</option>
+                    <option value="185">185</option>
+                    <option value="186">186</option>
+                    <option value="187">187</option>
+                    <option value="188">188</option>
+                    <option value="189">189</option>
+                    <option value="190">190</option>
+                    <option value="191">191</option>
+                    <option value="192">192</option>
+                    <option value="193">193</option>
+                    <option value="194">194</option>
+                    <option value="195">195</option>
+                    <option value="196">196</option>
+                    <option value="198">198</option>
+                    <option value="199">199</option>
+                </select>
+            </label>
+        </div>
+        <div class="cell-1">
+            <label for="">
+                省份：
+                <select name="province" onChange="setCity(this, this.form.city);">
+                    <option value="">不确定</option>
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                    <option value="天津">天津</option>
+                    <option value="重庆">重庆</option>
+                    <option value="河北">河北</option>
+                    <option value="山西">山西</option>
+                    <option value="内蒙古">内蒙古</option>
+                    <option value="辽宁">辽宁</option>
+                    <option value="吉林">吉林</option>
+                    <option value="黑龙江">黑龙江</option>
+                    <option value="江苏">江苏</option>
+                    <option value="浙江">浙江</option>
+                    <option value="安徽">安徽</option>
+                    <option value="福建">福建</option>
+                    <option value="江西">江西</option>
+                    <option value="山东">山东</option>
+                    <option value="河南">河南</option>
+                    <option value="湖北">湖北</option>
+                    <option value="湖南">湖南</option>
+                    <option value="广东">广东</option>
+                    <option value="广西">广西</option>
+                    <option value="海南">海南</option>
+                    <option value="四川">四川</option>
+                    <option value="贵州">贵州</option>
+                    <option value="云南">云南</option>
+                    <option value="西藏">西藏</option>
+                    <option value="陕西">陕西</option>
+                    <option value="甘肃">甘肃</option>
+                    <option value="宁夏">宁夏</option>
+                    <option value="青海">青海</option>
+                    <option value="新疆">新疆</option>
+                </select>
+            </label>
+        </div>
+        <div class="cell-1">
+            <label for="">
+                城市：
+                <select name="city" id="citys">
+                    <option value="">不确定</option>
+                </select>
+            </label>
+        </div>
+        <div class="cell-1">
+            <label for="">
+                后四位：
+                <input name="backNum" type="number" maxlength="4" placeholder="如6、68、766、5622等">
+            </label>
+        </div>
+        <div class="cell-2">
+            <div style="margin-top: 15px; margin-bottom: 15px; text-align: center;">
+                <button class="button" onclick="search()">查询所有号码</button>
+            </div>
+        </div>
+</form>
+<div style="display: none">
+<script type="text/javascript" src="https://js.users.51.la/21354177.js"></script>
+    </div>
+</body>
