@@ -1,0 +1,18 @@
+@font-face{font-family:"nmb";src:url('../fonts/font_2569006_ilenyn8lx4o.woff2') format('woff2'),url('../fonts/font_2569006_ilenyn8lx4o.woff') format('woff'),url('../fonts/font_2569006_ilenyn8lx4o.ttf') format('truetype');}
+.nmb{font-family:"nmb"!important;font-size:16px;font-style:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.a-paihangbang:before{content:"\e6c1";}
+.a-ranking:before{content:"\e665";}
+.a-close:before{content:"\e61d";}
+.a-dingbu:before{content:"\e67a";}
+.a-so:before{content:"\e62b";}
+.a-shang:before{content:"\e61e";}
+.a-sousuo:before{content:"\e61c";}
+.a-shuaxin:before{content:"\e715";}
+.a-404:before{content:"\e693";}
+.a-guanzhu:before{content:"\e63c";}
+.a-share:before{content:"\e605";}
+.a-down:before{content:"\e76e";}
+.a-erweima:before{content:"\e643";}
+.a-xiazai:before{content:"\e668";}
+.a-guanbi:before{content:"\e6f3";}
+.a-caidan:before{content:"\e796";}
