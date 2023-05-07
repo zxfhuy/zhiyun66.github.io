@@ -1,1 +1,342 @@
-zhiyun
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<title>HTML/CSS/Javascript在线代码运行工具</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<style type="text/css">
+
+textarea {
+
+	width: 100%;
+
+	border: 0 none;
+
+	overflow: auto;
+
+	resize: none;
+
+	outline: none;
+
+}
+
+a {
+
+	color: #333;
+
+	text-decoration: none;
+
+	margin: 0;
+
+	padding: 0;
+
+	word-wrap: break-word;
+
+	font-family: verdana,Microsoft YaHei,Tahoma,sans-serif;
+
+}
+
+.content .textbox {
+
+	top:25px;
+
+	right:0;
+
+	left:0;
+
+	padding-left:5px;
+
+	border:1px #d1d1d1 solid;
+
+	top: 25px;
+
+	background: url(inpbg.png) #fff no-repeat;
+
+	overflow:hidden;
+
+	position:absolute;
+
+	
+
+}
+
+
+
+.content .textbox div textarea {
+
+	padding:5px 0;
+
+	width:100%;
+
+	background: url(inpbg.png) no-repeat -4px 0;
+
+}
+
+.content .btnbar {
+
+	top:475px;
+
+	right:17px;
+
+	position:absolute;
+
+}
+
+.btns {
+
+	display:block;
+
+	margin-right:8px;
+
+	width:80px;
+
+	height:38px;
+
+	line-height:38px;
+
+	font-size:14px;
+
+	text-align:center;
+
+	border:1px #cacaca solid;
+
+	border-radius:2px;
+
+	background: url(btn_bg.png) repeat-x;
+
+	float:left;
+
+	font-family: verdana,Microsoft YaHei,Tahoma,sans-serif;
+
+}
+
+.btns:hover {
+
+	border:1px #a4a4a4 solid;
+
+	background-position:0 -40px;
+
+	text-decoration:none;
+
+}
+
+.btns:active {
+
+	background-position:0 -80px;
+
+}
+
+.btns.hilite {
+
+	color:#f15214;
+
+	border:1px #ffc88b solid;
+
+	background-position:0 -120px;
+
+}
+
+.btns.hilite:hover {
+
+	border:1px #f60 solid;
+
+	background-position:0 -160px;
+
+}
+
+.btns.hilite:active {
+
+	background-position:0 -200px;
+
+}
+
+
+
+
+
+.content #code {
+
+	left:25px;
+
+	right:25px;
+
+	height:440px;
+
+}
+
+.content #code textarea {
+
+	height:430px;
+
+}
+
+</style>
+
+
+
+<script type="text/javascript">  
+
+(
+
+	function()
+
+	{
+
+		window.onload = function()
+
+		{
+
+			var tips = "将HTML代码粘在此处，点击运行即可。";
+
+			var codeinp = document.getElementById("codeinp");
+
+			var btclear = document.getElementById("btclear");
+
+			var btrun = document.getElementById("btrun");
+
+			
+
+			codeinp.onfocus = function()
+
+			{
+
+				var code = codeinp.value;
+
+				code == tips && (codeinp.value = "");
+
+			};
+
+			
+
+			codeinp.onblur = function()
+
+			{
+
+				var code = codeinp.value;
+
+				code == "" && (codeinp.value = tips);
+
+			};
+
+			
+
+			btclear.onclick = function()
+
+			{
+
+				codeinp.value = "";
+
+				codeinp.focus();
+
+			};
+
+			
+
+			btrun.onclick = function()
+
+			{
+
+				var code = codeinp.value;
+
+				if(code != tips)
+
+				{
+
+					var newwin = window.open('','','');
+
+					newwin.opener = null;
+
+					newwin.document.write(code);
+
+					newwin.document.close();
+
+				}
+
+				else
+
+				{
+
+					alert("请将需要运行的HTML填写到输入框后再运行！", "alert", "运行提示");
+
+				}
+
+			};
+
+		}
+
+	}
+
+)();
+
+</script>
+
+
+
+
+
+</head>
+
+<body>
+
+<div class="content">
+
+	<div id="code" class="textbox">
+
+		<div><textarea id="codeinp">提示您：将HTML代码粘在此处!点击运行即可。</textarea></div>
+
+	</div>
+
+	<div class="btnbar cl">
+
+		<a id="btclear" class="btns" href="javascript:void(0);" hidefocus="true">清空</a>
+
+		<a id="btrun" class="btns hilite" href="javascript:void(0);" hidefocus="true">运行</a>
+
+	</div>
+
+</div>
+
+<!-- /wrapper -->
+<br>
+
+<!--百度收录自动推送-->
+
+<script>
+
+(function(){
+
+    var bp = document.createElement('script');
+
+    var curProtocol = window.location.protocol.split(':')[0];
+
+    if (curProtocol === 'https') {
+
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+
+    }
+
+    else {
+
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+
+    }
+
+    var s = document.getElementsByTagName("script")[0];
+
+    s.parentNode.insertBefore(bp, s);
+
+})();
+
+</script>
+
+
+
+<div style="display: none">
+<script type="text/javascript" src="https://js.users.51.la/21354177.js"></script></div>
+</body>
+
+</html>
+
