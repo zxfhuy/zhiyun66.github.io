@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>智云影音</title>
+    <style type="text/css">
+        body,
+        #LSPlayer {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            background: #000;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <script>var vurl = window.location.href.split('url=')[1]; document.write('<video id="LSPlayer" class="video-js vjs-linksoon" controls autoplay poster="static/images/loading.gif"><source src="' + vurl + '" type="application/x-mpegURL"></video>'); var player = videojs('LSPlayer'); player.play();</script>
+</body>
+
+</html>
