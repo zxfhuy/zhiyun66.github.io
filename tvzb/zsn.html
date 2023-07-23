@@ -1,267 +1,388 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>电视TV直播源</title>
-    <meta name="keywords" content="智卓星网，图片源码，智卓星网平台，娱乐资源，美女写真机构，图片采集源码，性感模特，github">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script type="text/javascript">
-   if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        window.location.href = "#";
-    }else{
-        window.location.href = "https://github.com/zhiyun66/zhi1";
-    }
-</script>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <title>直播频道</title>
+    <meta name="keywords" content="智卓星网" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="robots" content="nofollow" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /><!--这个和下面2个的是控制微信缓存问题-->
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-<style>
-*{margin:0;padding:0;font-family:"微软雅黑",Microsoft YaHei,Arial, Helvetica, sans-serif, "宋体";font-size:12px;list-style:none;font-weight: normal;}
-a{ text-decoration:none;}
-a:focus {outline-style:none; -moz-outline-style: none;}
-a{blr:expression(this.onFocus=this.close());}
-a{blr:expression(this.onFocus=this.blur());}
-img{ border:0; vertical-align:middle;}
-ul{ padding:0; margin:0;}
-li{ list-style:none;}
-.main{padding: 0 20px;}
-/*总条款有链接部分*/
-.clause_a{font-size:14px;height:50px;line-height: 50px;border-bottom:1px solid #eee;display: block;color: #4c4c4c;padding: 0 20px; }
-.clause_a i{background: url("sta/images/arrow.png") right center no-repeat;width:50px;height: 50px;float: right; }
-/*子页面*/
-h3{font-size:16px;height: 36px;line-height: 36px;color: #333;font-weight: bold;}
-.convention_main{color: #333;font-size: 14px;line-height: 28px;}
-h4{font-weight: bold;color: #333;font-size: 14px;}
-/*返回按钮*/
-.return{height:40px;text-align: center;font-size:16px;color:#333;font-weight: bold;margin-bottom:10px;position: relative;line-height: 44px;}
-.return_button{width: 50px;height: 50px;position: absolute;left: 0;top: 0;z-index: 1;background: url("sta/images/arrow_left.png") no-repeat 10px center;display: block;}
-.can{font-size: 14px;color: #666;text-align: center;}
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}
+audio,canvas,video{display:inline-block;}
+audio:not([controls]){display:none;height:0;}
+[hidden]{display:none;}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body,div,span,iframe,input,form,input,h1,h2,h3,h4,h5,h6,p,a,em,img,b,dl,dt,dd,ul,ol,li,label{padding:0;margin:0;}
+a:focus{outline:thin dotted;}
+a:active,a:hover{outline:0; -webkit-tap-highlight-color:transparent;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+dfn{font-style:italic;}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}
+mark{background:#ff0;color:#000;}
+code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}
+pre{white-space:pre-wrap;}
+q{quotes:"\201C" "\201D" "\2018" "\2019";}
+small{font-size:80%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{border:0;}
+svg:not(:root){overflow:hidden;}
+figure{margin:0;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;padding:0;}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}
+button,input{line-height:normal;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],html input[disabled]{cursor:default;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="search"]{-webkit-appearance:none;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration,input[type="checkbox"]{-webkit-appearance:none;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+textarea{overflow:auto;vertical-align:top;}
+table{border-collapse:collapse;border-spacing:0;}
+ul,ol{list-style:none;}
+h1,h2,h3,h4,h6{font-weight:600;font-size:100%;}
+html{-webkit-text-size-adjust:100%;width:100%;height:100%;}
+em{font-style:normal;}
+
+/*base css*/
+body{font:10px/1.8 tahoma,'\5b8b\4f53',arial,\5b8b\4f53,sans-serif;background-color:#eef2f6; color:#181818;  }
+.wrapper{width:100%;margin:0 auto; overflow:hidden; }
+.spr,.back-icon:before,[class^=info-icon-],.wlist-time:before{display:block;background-image:url(../img/spr.png);background-repeat:no-repeat; background-size:21px auto;}
+.clearfix{*zoom:1;}
+.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
+.fl{float:left}
+.fr{float:right}
+.zoom{zoom:1;overflow:hidden}
+.cor-blue{ color:#5a96e6}
+
+/*header*/
+.p-header{ width:100%; height:56px; background-color:#fff; border-bottom:1px solid #e0e0e0; position:relative}
+.p-tit{ text-align:center; line-height:56px; font-size:1.2rem;}
+.back-icon{ display:block; width:56px; height:56px; position:absolute; left:0; top:0}
+.back-icon:after{ content:''; display:block; height:24px; width:24px; background:url(../img/back.PNG) no-repeat 0 0; background-size:24px auto; position:absolute; left:16px; top:16px;}
+
+/**/
+.h2-tit{ color:#6c8594; font-size:1rem; width:100%; box-sizing:border-box; padding-left:23px; height:47px; line-height:47px;}
+.qus-con,.cate-con,.art-con{ background-color:#fff;}
+
+[class^=cate-icon-]{ display:block; width:25px; height:25px; background-image:url(../img/cate-icon.png); background-repeat:no-repeat; background-size:25px auto; margin:0 auto}
+.cate-icon-1{ background-position:0 0}
+.cate-icon-2{ background-position:0 -25px}
+.cate-icon-3{ background-position:0 -50px}
+.cate-icon-4{ background-position:0 -75px}
+
+.cate-list li{ width:50%; float:left; padding:20px 0;}
+.cate-list li a{ display:block; height:44px; width:100%; text-align:center; color:#181818; text-decoration:none  }
+.cate-list li em{ font-size:.9rem;}
+
+.qus-list li{ width:100%; height:60px; position:relative}
+.qus-list li:after{ content:''; display:block; width:15px; height:15px; background:url(../img/arw.png) no-repeat 0 0; background-size:15px auto; position:absolute; right:25px; top:22px;}
+.qus-list li a{ display:block; width:100%; height:60px; line-height:60px; font-size:.9rem; color:#181818; box-sizing:border-box; padding-left:18px; text-decoration:none }
+.qus-list li+li{ border-top:1px solid #eef2f6}
+
+.i-footer{ padding-top:29px;}
+.i-footer a{ display:block; width:100%; height:28px; line-height:28px; color:#02AFC6; font-size:.9rem; text-align:center; text-decoration:none }
+
+/**/
+.art-con{ width:100%; box-sizing:border-box; padding:13px 23px;}
+.art-con p{ line-height:24px; margin-top:5px; font-size:.9rem; }
+.art-con p img{ display:block; margin:24px auto; width:222px; height:380px; border:1px solid #a2a2a2}
+
+.a-footer{ padding:8px 0 20px; display:none;}
+.a-footer-tit{ height:45px; line-height:45px; padding-left:22px; color:#373A39; font-size:.9rem;}
+.footer-btn{ padding-left:7px;}
+.footer-btn li{ width:120px; height:32px; float:left;margin-left:15px;}
+.footer-btn li a{ display:block; width:100%; height:100%; background-color:#fb0; color:#fff; font-size:.9rem; text-align:center; line-height:32px; border-radius:20px; cursor:pointer }
+.f-box-1,.f-box-2{ padding-left:20px;font-size:.9rem; display:none}
+.f-box-2{  color:#00bcd5; }
+.f-box-1 a{ color:#00bcd5; text-decoration:underline; }
 </style>
-</head>
-<body>
 </div>
-<DIV class=space></DIV></DIV>
-<div class="clear"></div></div><span class="STYLE14"><marquee style="FONT-FAMILY: 宋体; COLOR: #FF0000; FONT-WEIGHT: bold"> <span class="STYLE14"><span class="STYLE14"><b>请选择不同直播线路频道进入观看直播，出现网络链接失败请直接在手机返回键点击返回即可！不需要点击重试或退出，请在手机按返回键。官方QQ交流群号： 463032683</span> </span></marquee></span></div><span class="STYLE14"></span><div class="center margintop border clear main">
-<DIV id=contentuqyq class=block>
-<DIV class=ad_1500><SPAN id=myads1></SPAN></DIV>	
-</div>
-	<div class="clear"></div>
-</div>
-</div>
-<div class="return">电视TV直播列表<a href=""  class="return_button"></a></div>
-<div class="main">
+<style>
+@charset"UTF-8";
+a, body, div, footer, h1, h2, h3, h4, h5, h6, header, html, i, img, menu, nav, p, ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
 
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226352/index.m3u8" class="clause_a">爱上4K频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226582/index.m3u8" class="clause_a">SiTV欢笑剧场频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226465/index.m3u8" class="clause_a">CHC动作电影频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226462/index.m3u8" class="clause_a">CHC家庭影院频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226463/index.m3u8" class="clause_a">CHC高清电影频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226010/index.m3u8" class="clause_a">CCTV1频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226224/index.m3u8" class="clause_a">CCTV2频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226397/index.m3u8" class="clause_a">CCTV3频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226191/index.m3u8" class="clause_a">CCTV4频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226395/index.m3u8" class="clause_a">CCTV5频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225761/index.m3u8" class="clause_a">CCTV5+频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226393/index.m3u8" class="clause_a">CCTV6频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226192/index.m3u8" class="clause_a">CCTV7频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226391/index.m3u8" class="clause_a">CCTV8频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226197/index.m3u8" class="clause_a">CCTV9频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226189/index.m3u8" class="clause_a">CCTV10频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226240/index.m3u8" class="clause_a">CCTV11频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226190/index.m3u8" class="clause_a">CCTV12频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226233/index.m3u8" class="clause_a">CCTV13频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226193/index.m3u8" class="clause_a">CCTV14频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225785/index.m3u8" class="clause_a">CCTV15频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226921/index.m3u8" class="clause_a">CCTV16频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226198/index.m3u8" class="clause_a">CCTV17频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226947/index.m3u8" class="clause_a">CCTV世界地理频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226975/index.m3u8" class="clause_a">CCTV兵器科技频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226956/index.m3u8" class="clause_a">CCTV央视台球频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226981/index.m3u8" class="clause_a">CCTV央视文化精品频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226969/index.m3u8" class="clause_a">CCTV女性时尚频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226972/index.m3u8" class="clause_a">CCTV怀旧剧场频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226987/index.m3u8" class="clause_a">CCTV电视指南频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226959/index.m3u8" class="clause_a">CCTV第一剧场频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226950/index.m3u8" class="clause_a">CCTV风云剧场频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226984/index.m3u8" class="clause_a">CCTV风云足球频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226953/index.m3u8" class="clause_a">CCTV风云音乐频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226978/index.m3u8" class="clause_a">CCTV高尔夫网球频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225745/index.m3u8" class="clause_a">CGTN频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226009/index.m3u8" class="clause_a">精彩综艺 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225798/index.m3u8" class="clause_a">浙江卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226204/index.m3u8" class="clause_a">天津卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226211/index.m3u8" class="clause_a">湖南卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226217/index.m3u8" class="clause_a">东方卫视频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225800/index.m3u8" class="clause_a">江苏卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226201/index.m3u8" class="clause_a">辽宁卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226222/index.m3u8" class="clause_a">北京卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225803/index.m3u8" class="clause_a">广东卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226194/index.m3u8" class="clause_a">湖北卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226209/index.m3u8" class="clause_a">山东卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225801/index.m3u8" class="clause_a">深圳卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226202/index.m3u8" class="clause_a">重庆卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226203/index.m3u8" class="clause_a">安徽卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225802/index.m3u8" class="clause_a">黑龙江卫视频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226351/index.m3u8" class="clause_a">湖南金鹰纪实频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226966/index.m3u8" class="clause_a">上海第一财经频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226230/index.m3u8" class="clause_a">上海纪实人文频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226232/index.m3u8" class="clause_a">北京体育休闲频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226805/index.m3u8" class="clause_a">湖南快乐垂钓频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226808/index.m3u8" class="clause_a">湖南茶频道频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226803/index.m3u8" class="clause_a">SiTV游戏风云频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226581/index.m3u8" class="clause_a">SiTV都市剧场频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226957/index.m3u8" class="clause_a">NewTV怡伴健康频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226951/index.m3u8" class="clause_a">哒啵电竞 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226954/index.m3u8" class="clause_a">哒啵赛事 频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226580/index.m3u8" class="clause_a">乐游频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226945/index.m3u8" class="clause_a">千阳频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226378/index.m3u8" class="clause_a">商洛1 频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226920/index.m3u8" class="clause_a">城固频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226390/index.m3u8" class="clause_a">宁强1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226389/index.m3u8" class="clause_a">宁强2 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226385/index.m3u8" class="clause_a">安康 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226381/index.m3u8" class="clause_a">宝鸡1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226382/index.m3u8" class="clause_a">宝鸡2 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226331/index.m3u8" class="clause_a">汉中1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225990/index.m3u8" class="clause_a">汉中2 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225991/index.m3u8" class="clause_a">汉中3 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226938/index.m3u8" class="clause_a">洋县 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226000/index.m3u8" class="clause_a">留坝 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226556/index.m3u8" class="clause_a">西乡 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226457/index.m3u8" class="clause_a">镇巴 频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226934/index.m3u8" class="clause_a">悦美生活购物频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226326/index.m3u8" class="clause_a">江西风尚购物 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226547/index.m3u8" class="clause_a">凤凰中文 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226546/index.m3u8" class="clause_a">凤凰资讯 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226552/index.m3u8" class="clause_a">CCTV1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225762/index.m3u8" class="clause_a">CCTV2 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225782/index.m3u8" class="clause_a">CCTV3 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225781/index.m3u8" class="clause_a">CCTV4 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225780/index.m3u8" class="clause_a">CCTV5 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226394/index.m3u8" class="clause_a">CCTV6 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226248/index.m3u8" class="clause_a">CCTV7 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226407/index.m3u8" class="clause_a">CCTV8 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225758/index.m3u8" class="clause_a">CCTV9 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225777/index.m3u8" class="clause_a">CCTV10 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225776/index.m3u8" class="clause_a">CCTV11 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225775/index.m3u8" class="clause_a">CCTV12 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225774/index.m3u8" class="clause_a">CCTV13 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225784/index.m3u8" class="clause_a">CCTV14 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226208/index.m3u8" class="clause_a">CCTV17 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226341/index.m3u8" class="clause_a">IPTV3+ 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226342/index.m3u8" class="clause_a">IPTV5+ 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226343/index.m3u8" class="clause_a">IPTV6+ 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226344/index.m3u8" class="clause_a">IPTV8+ 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226346/index.m3u8" class="clause_a">IPTV相声小品 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226235/index.m3u8" class="clause_a">中央新影发现之旅 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226236/index.m3u8" class="clause_a">中央新影老故事 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226237/index.m3u8" class="clause_a">CCTV女性时尚 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225753/index.m3u8" class="clause_a">中国教育1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225756/index.m3u8" class="clause_a">中国教育2 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226226/index.m3u8" class="clause_a">中国教育3 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226225/index.m3u8" class="clause_a">中国教育4 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225766/index.m3u8" class="clause_a">东南卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225789/index.m3u8" class="clause_a">东方卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225751/index.m3u8" class="clause_a">云南卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226214/index.m3u8" class="clause_a">兵团卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225786/index.m3u8" class="clause_a">内蒙古卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225790/index.m3u8" class="clause_a">北京卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226219/index.m3u8" class="clause_a">厦门卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225792/index.m3u8" class="clause_a">吉林卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225768/index.m3u8" class="clause_a">四川卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225765/index.m3u8" class="clause_a">天津卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225748/index.m3u8" class="clause_a">宁夏卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225773/index.m3u8" class="clause_a">安徽卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225771/index.m3u8" class="clause_a">山东卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225763/index.m3u8" class="clause_a">山西卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225757/index.m3u8" class="clause_a">广东卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225770/index.m3u8" class="clause_a">广西卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225747/index.m3u8" class="clause_a">新疆卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225746/index.m3u8" class="clause_a">江苏卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225764/index.m3u8" class="clause_a">江西卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225750/index.m3u8" class="clause_a">河北卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225767/index.m3u8" class="clause_a">河南卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225788/index.m3u8" class="clause_a">浙江卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225769/index.m3u8" class="clause_a">海南卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225752/index.m3u8" class="clause_a">深圳卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225760/index.m3u8" class="clause_a">湖北卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225787/index.m3u8" class="clause_a">湖南卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225754/index.m3u8" class="clause_a">甘肃卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226212/index.m3u8" class="clause_a">西藏卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225793/index.m3u8" class="clause_a">贵州卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225772/index.m3u8" class="clause_a">辽宁卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225791/index.m3u8" class="clause_a">重庆卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225821/index.m3u8" class="clause_a">陕西卫视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225794/index.m3u8" class="clause_a">青海卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226234/index.m3u8" class="clause_a">四川康巴卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226238/index.m3u8" class="clause_a">山东教育卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226220/index.m3u8" class="clause_a">吉林延边卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226229/index.m3u8" class="clause_a">陕西农林卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226228/index.m3u8" class="clause_a">青海安多卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226218/index.m3u8" class="clause_a">广东大湾区卫视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226347/index.m3u8" class="clause_a">足球 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226348/index.m3u8" class="clause_a">台球 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226245/index.m3u8" class="clause_a">栾坛春秋 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226241/index.m3u8" class="clause_a">置业频道 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226244/index.m3u8" class="clause_a">NNM家庭理财频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226242/index.m3u8" class="clause_a">京视剧场 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226213/index.m3u8" class="clause_a">上海哈哈炫动 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225743/index.m3u8" class="clause_a">北京卡酷少儿 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226227/index.m3u8" class="clause_a">广东嘉佳卡通 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225795/index.m3u8" class="clause_a">江苏优漫卡通频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226350/index.m3u8" class="clause_a">江苏财富天下 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225744/index.m3u8" class="clause_a">湖南金鹰卡通频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225850/index.m3u8" class="clause_a">百视通体育 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226363/index.m3u8" class="clause_a">陕西体育休闲 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226361/index.m3u8" class="clause_a">陕西公共 频道<i></i></a>
- <a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226360/index.m3u8" class="clause_a">陕西影视频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226357/index.m3u8" class="clause_a">陕西新闻资讯 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226358/index.m3u8" class="clause_a">陕西都市青春 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226359/index.m3u8" class="clause_a">陕西生活 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226364/index.m3u8" class="clause_a">陕西西部电影 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226366/index.m3u8" class="clause_a">西安新闻综合 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226367/index.m3u8" class="clause_a">西安城市 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226368/index.m3u8" class="clause_a">西安商务资讯 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226369/index.m3u8" class="clause_a">西安影视 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226370/index.m3u8" class="clause_a">西安丝路 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226371/index.m3u8" class="clause_a">西安教育 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226952/index.m3u8" class="clause_a">勉县综合 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226955/index.m3u8" class="clause_a">南郑1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226372/index.m3u8" class="clause_a">咸阳综合 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226375/index.m3u8" class="clause_a">延安公共 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226374/index.m3u8" class="clause_a">延安新闻综合 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226373/index.m3u8" class="clause_a">杨凌 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226377/index.m3u8" class="clause_a">榆林1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226376/index.m3u8" class="clause_a">渭南 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226322/index.m3u8" class="clause_a">略阳1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226379/index.m3u8" class="clause_a">铜川1 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226380/index.m3u8" class="clause_a">铜川2 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226018/index.m3u8" class="clause_a">江苏好享购物频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226355/index.m3u8" class="clause_a">北京家有购物 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226354/index.m3u8" class="clause_a">吉林家家购物 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226461/index.m3u8" class="clause_a">聚鲨环球精选 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226353/index.m3u8" class="clause_a">湖南快乐购 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226362/index.m3u8" class="clause_a">陕西乐家购物 频道<i></i></a>
-<a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226900/index.m3u8" class="clause_a">中视购物频道<i></i></a>
+.form {
+    width: 100%;
+    background: #f8f8f8;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 5px;
+}
+
+.form h2 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fda206;
+    white-space: nowrap;
+}
 
 
+@media screen and (max-width: 750px) {
+    .index {
+        padding: 10px 0
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .index .cont-list {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header .nav li:before {
+        display: none
+    }
+    .header .nav li a {
+        font-weight: normal;
+    }
+    .form h2 {
+        font-size: 16px;
+    }
+
+}
+
+
+</style>
+<div class="form">
+            <marquee>
+                <h2>上下滑动浏览查看更多资源，出现网络链接失败请直接在手机返回键点击返回即可！不需要点击重试或退出，请在手机按返回键。部分视频资源需要缓存一会播放！官方QQ交流群号： 463032683</h2>
+                </marquee>
+        </div></div>    
+        </div>
+
+<div class="wrapper">
+    <section class="qus-box">
+
+        <center><strong><h2 class="h2-tit">直播频道列表大全</h2></strong></center>
+        <div class="qus-con">
+            <ul class="qus-list clearfix">
+                <b>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226352/index.m3u8">爱上4K频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226582/index.m3u8">SiTV欢笑剧场频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226465/index.m3u8">CHC动作电影频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226462/index.m3u8">CHC家庭影院频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226463/index.m3u8">CHC高清电影频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226010/index.m3u8">CCTV1频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226224/index.m3u8">CCTV2频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226397/index.m3u8">CCTV3频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226191/index.m3u8">CCTV4频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226395/index.m3u8">CCTV5频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225761/index.m3u8">CCTV5+频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226393/index.m3u8">CCTV6频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226192/index.m3u8">CCTV7频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226391/index.m3u8">CCTV8频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226197/index.m3u8">CCTV9频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226189/index.m3u8">CCTV10频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226240/index.m3u8">CCTV11频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226190/index.m3u8">CCTV12频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226233/index.m3u8">CCTV13频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226193/index.m3u8">CCTV14频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225785/index.m3u8">CCTV15频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226921/index.m3u8">CCTV16频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226198/index.m3u8">CCTV17频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226947/index.m3u8">CCTV世界地理频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226975/index.m3u8">CCTV兵器科技频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226956/index.m3u8">CCTV央视台球频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226981/index.m3u8">CCTV央视文化精品频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226969/index.m3u8">CCTV女性时尚频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226972/index.m3u8">CCTV怀旧剧场频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226987/index.m3u8">CCTV电视指南频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226959/index.m3u8">CCTV第一剧场频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226950/index.m3u8">CCTV风云剧场频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226984/index.m3u8">CCTV风云足球频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226953/index.m3u8">CCTV风云音乐频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226978/index.m3u8">CCTV高尔夫网球频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225745/index.m3u8">CGTN频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226009/index.m3u8">精彩综艺 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225798/index.m3u8">浙江卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226204/index.m3u8">天津卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226211/index.m3u8">湖南卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226217/index.m3u8">东方卫视频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225800/index.m3u8">江苏卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226201/index.m3u8">辽宁卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226222/index.m3u8">北京卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225803/index.m3u8">广东卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226194/index.m3u8">湖北卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226209/index.m3u8">山东卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225801/index.m3u8">深圳卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226202/index.m3u8">重庆卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226203/index.m3u8">安徽卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225802/index.m3u8">黑龙江卫视频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226351/index.m3u8">湖南金鹰纪实频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226966/index.m3u8">上海第一财经频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226230/index.m3u8">上海纪实人文频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226232/index.m3u8">北京体育休闲频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226805/index.m3u8">湖南快乐垂钓频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226808/index.m3u8">湖南茶频道频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226803/index.m3u8">SiTV游戏风云频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226581/index.m3u8">SiTV都市剧场频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226957/index.m3u8">NewTV怡伴健康频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226951/index.m3u8">哒啵电竞 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226954/index.m3u8">哒啵赛事 频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226580/index.m3u8">乐游频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226945/index.m3u8">千阳频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226378/index.m3u8">商洛1 频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226920/index.m3u8">城固频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226390/index.m3u8">宁强1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226389/index.m3u8">宁强2 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226385/index.m3u8">安康 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226381/index.m3u8">宝鸡1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226382/index.m3u8">宝鸡2 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226331/index.m3u8">汉中1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225990/index.m3u8">汉中2 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225991/index.m3u8">汉中3 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226938/index.m3u8">洋县 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226000/index.m3u8">留坝 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226556/index.m3u8">西乡 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226457/index.m3u8">镇巴 频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226934/index.m3u8">悦美生活购物频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226326/index.m3u8">江西风尚购物 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226547/index.m3u8">凤凰中文 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226546/index.m3u8">凤凰资讯 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226552/index.m3u8">CCTV1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225762/index.m3u8">CCTV2 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225782/index.m3u8">CCTV3 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225781/index.m3u8">CCTV4 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225780/index.m3u8">CCTV5 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226394/index.m3u8">CCTV6 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226248/index.m3u8">CCTV7 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226407/index.m3u8">CCTV8 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225758/index.m3u8">CCTV9 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225777/index.m3u8">CCTV10 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225776/index.m3u8">CCTV11 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225775/index.m3u8">CCTV12 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225774/index.m3u8">CCTV13 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225784/index.m3u8">CCTV14 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226208/index.m3u8">CCTV17 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226341/index.m3u8">IPTV3+ 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226342/index.m3u8">IPTV5+ 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226343/index.m3u8">IPTV6+ 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226344/index.m3u8">IPTV8+ 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226346/index.m3u8">IPTV相声小品 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226235/index.m3u8">中央新影发现之旅 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226236/index.m3u8">中央新影老故事 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226237/index.m3u8">CCTV女性时尚 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225753/index.m3u8">中国教育1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225756/index.m3u8">中国教育2 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226226/index.m3u8">中国教育3 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226225/index.m3u8">中国教育4 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225766/index.m3u8">东南卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225789/index.m3u8">东方卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225751/index.m3u8">云南卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226214/index.m3u8">兵团卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225786/index.m3u8">内蒙古卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225790/index.m3u8">北京卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226219/index.m3u8">厦门卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225792/index.m3u8">吉林卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225768/index.m3u8">四川卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225765/index.m3u8">天津卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225748/index.m3u8">宁夏卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225773/index.m3u8">安徽卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225771/index.m3u8">山东卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225763/index.m3u8">山西卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225757/index.m3u8">广东卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225770/index.m3u8">广西卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225747/index.m3u8">新疆卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225746/index.m3u8">江苏卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225764/index.m3u8">江西卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225750/index.m3u8">河北卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225767/index.m3u8">河南卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225788/index.m3u8">浙江卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225769/index.m3u8">海南卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225752/index.m3u8">深圳卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225760/index.m3u8">湖北卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225787/index.m3u8">湖南卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225754/index.m3u8">甘肃卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226212/index.m3u8">西藏卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225793/index.m3u8">贵州卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225772/index.m3u8">辽宁卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225791/index.m3u8">重庆卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225821/index.m3u8">陕西卫视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225794/index.m3u8">青海卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226234/index.m3u8">四川康巴卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226238/index.m3u8">山东教育卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226220/index.m3u8">吉林延边卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226229/index.m3u8">陕西农林卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226228/index.m3u8">青海安多卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226218/index.m3u8">广东大湾区卫视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226347/index.m3u8">足球 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226348/index.m3u8">台球 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226245/index.m3u8">栾坛春秋 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226241/index.m3u8">置业频道 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226244/index.m3u8">NNM家庭理财频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226242/index.m3u8">京视剧场 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226213/index.m3u8">上海哈哈炫动 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225743/index.m3u8">北京卡酷少儿 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226227/index.m3u8">广东嘉佳卡通 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225795/index.m3u8">江苏优漫卡通频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226350/index.m3u8">江苏财富天下 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225744/index.m3u8">湖南金鹰卡通频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221225850/index.m3u8">百视通体育 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226363/index.m3u8">陕西体育休闲 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226361/index.m3u8">陕西公共 频道</a></li>
+ <li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226360/index.m3u8">陕西影视频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226357/index.m3u8">陕西新闻资讯 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226358/index.m3u8">陕西都市青春 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226359/index.m3u8">陕西生活 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226364/index.m3u8">陕西西部电影 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226366/index.m3u8">西安新闻综合 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226367/index.m3u8">西安城市 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226368/index.m3u8">西安商务资讯 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226369/index.m3u8">西安影视 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226370/index.m3u8">西安丝路 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226371/index.m3u8">西安教育 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226952/index.m3u8">勉县综合 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226955/index.m3u8">南郑1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226372/index.m3u8">咸阳综合 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226375/index.m3u8">延安公共 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226374/index.m3u8">延安新闻综合 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226373/index.m3u8">杨凌 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226377/index.m3u8">榆林1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226376/index.m3u8">渭南 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226322/index.m3u8">略阳1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226379/index.m3u8">铜川1 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226380/index.m3u8">铜川2 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226018/index.m3u8">江苏好享购物频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226355/index.m3u8">北京家有购物 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226354/index.m3u8">吉林家家购物 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226461/index.m3u8">聚鲨环球精选 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226353/index.m3u8">湖南快乐购 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226362/index.m3u8">陕西乐家购物 频道</a></li>
+<li><a href="http://dbiptv.sn.chinamobile.com/PLTV/88888890/224/3221226900/index.m3u8">中视购物频道</a></li>
+
+<b>
+</ul>
+</div>
+</section>
+    <footer class="i-footer">
+        <a href="javascript:history.back(-1)" id="FeedbackActivity">返回上一页</a><br>
+    </footer>
+</div>
 </div>
 	<style type="text/css">
 .layui-header-lmcjl{background:#000 linear-gradient(to left,#4cd964,#5ac8fa,#007aff,#34aadc,#5856d6,#ff2d55);content:"";height:5px;position:absolute;top:0;width:100%;}#love{display:inline-block;width:120px;position:fixed;right:20px;bottom:35px;z-index:999}#love img{width:100%;}.lmcjl_prove{position:absolute;bottom:10px;width:100%;}.lmcjl_prove div{width:100%;font-size:10px;text-align:center}.lmcjl_prove a{color:#fff}.lmcjl_right_fixed a{line-height:1;margin:0;padding:0;background:0 0;color:#666;vertical-align:baseline;text-decoration:none;font-size:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Source Han Sans CN",sans-serif}.lmcjl_right_fixed a:focus,a:hover{color:#09b1b9;text-decoration:none;cursor:pointer}.lmcjl_right_fixed .hd-time-limited{display:block;position:fixed;right:20.5px;border-radius:7px;bottom:450px;width:40px;height:140px;background:url(../images/vip.png) no-repeat center;animation:vip-199-180510 2.4s infinite;margin-top:10px}@keyframes vip-199-180510{0%{bottom:332px}50%{bottom:350px}100%{bottom:332px}}.lmcjl_right_fixed{position:fixed;right:22px;bottom:195px;z-index:11;z-index:999999}.lmcjl_right_fixed .feedback{-webkit-box-sizing:border-box;box-sizing:border-box;width:36px;height:35px;background-color:#fff;font-family:Helvetica,Arial,'PingFang SC','Hiragino Sans GB','Source Han Sans CN',Roboto,'Microsoft Yahei',sans-serif;color:#fa3c64;font-size:12px;padding:6px 6px;display:block;border-radius:5px;text-align:center;margin-top:10px;box-shadow:0 1px 2px rgba(0,0,0,.35);cursor:pointer}.graHover{position:relative;overflow:hidden}.graHover:before{display:none;position:absolute;top:0;left:0;content:'';width:100%;height:100%;background-color:rgba(255,255,255,.2)}.graHover:hover:before{display:block}
 .tool_explain{background-color:#EBEDF0;color:#000;border-radius:4px;padding:20px;margin:20px 0;}.clear{clear:both}
 </style>
 	 <div class="lmcjl_right_fixed">
-        
-        <a  class="feedback graHover" style="background-color: #fd0054;color:#fff;" href="javascript:history.back(-1)" target="_blank">返回上页</a>
-       
+	 <a  class="feedback graHover" style="background-color: #fd0054;color:#fff;" href="javascript:history.back(-1)" target="_blank">返回上页</a>
+        <a  class="feedback graHover" style="background-color: #373331;color:#fff;" href="javascript:history.back(-1)" target="_blank" rel="nofollow">返回首页</a>
              
             </div>
-
-
 </body>
 </html>

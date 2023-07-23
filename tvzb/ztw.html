@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+    <title>直播频道</title>
+    <meta name="keywords" content="智卓星网" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block;}
+audio,canvas,video{display:inline-block;}
+audio:not([controls]){display:none;height:0;}
+[hidden]{display:none;}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body,div,span,iframe,input,form,input,h1,h2,h3,h4,h5,h6,p,a,em,img,b,dl,dt,dd,ul,ol,li,label{padding:0;margin:0;}
+a:focus{outline:thin dotted;}
+a:active,a:hover{outline:0; -webkit-tap-highlight-color:transparent;}
+abbr[title]{border-bottom:1px dotted;}
+b,strong{font-weight:bold;}
+dfn{font-style:italic;}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0;}
+mark{background:#ff0;color:#000;}
+code,kbd,pre,samp{font-family:monospace,serif;font-size:1em;}
+pre{white-space:pre-wrap;}
+q{quotes:"\201C" "\201D" "\2018" "\2019";}
+small{font-size:80%;}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{border:0;}
+svg:not(:root){overflow:hidden;}
+figure{margin:0;}
+fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em;}
+legend{border:0;padding:0;}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}
+button,input{line-height:normal;}
+button,select{text-transform:none;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+button[disabled],html input[disabled]{cursor:default;}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+input[type="search"]{-webkit-appearance:none;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration,input[type="checkbox"]{-webkit-appearance:none;}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+textarea{overflow:auto;vertical-align:top;}
+table{border-collapse:collapse;border-spacing:0;}
+ul,ol{list-style:none;}
+h1,h2,h3,h4,h6{font-weight:600;font-size:100%;}
+html{-webkit-text-size-adjust:100%;width:100%;height:100%;}
+em{font-style:normal;}
+
+/*base css*/
+body{font:10px/1.8 tahoma,'\5b8b\4f53',arial,\5b8b\4f53,sans-serif;background-color:#eef2f6; color:#181818;  }
+.wrapper{width:100%;margin:0 auto; overflow:hidden; }
+.spr,.back-icon:before,[class^=info-icon-],.wlist-time:before{display:block;background-image:url(../img/spr.png);background-repeat:no-repeat; background-size:21px auto;}
+.clearfix{*zoom:1;}
+.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
+.fl{float:left}
+.fr{float:right}
+.zoom{zoom:1;overflow:hidden}
+.cor-blue{ color:#5a96e6}
+
+/*header*/
+.p-header{ width:100%; height:56px; background-color:#fff; border-bottom:1px solid #e0e0e0; position:relative}
+.p-tit{ text-align:center; line-height:56px; font-size:1.2rem;}
+.back-icon{ display:block; width:56px; height:56px; position:absolute; left:0; top:0}
+.back-icon:after{ content:''; display:block; height:24px; width:24px; background:url(../img/back.PNG) no-repeat 0 0; background-size:24px auto; position:absolute; left:16px; top:16px;}
+
+/**/
+.h2-tit{ color:#6c8594; font-size:1rem; width:100%; box-sizing:border-box; padding-left:23px; height:47px; line-height:47px;}
+.qus-con,.cate-con,.art-con{ background-color:#fff;}
+
+[class^=cate-icon-]{ display:block; width:25px; height:25px; background-image:url(../img/cate-icon.png); background-repeat:no-repeat; background-size:25px auto; margin:0 auto}
+.cate-icon-1{ background-position:0 0}
+.cate-icon-2{ background-position:0 -25px}
+.cate-icon-3{ background-position:0 -50px}
+.cate-icon-4{ background-position:0 -75px}
+
+.cate-list li{ width:50%; float:left; padding:20px 0;}
+.cate-list li a{ display:block; height:44px; width:100%; text-align:center; color:#181818; text-decoration:none  }
+.cate-list li em{ font-size:.9rem;}
+
+.qus-list li{ width:100%; height:60px; position:relative}
+.qus-list li:after{ content:''; display:block; width:15px; height:15px; background:url(../img/arw.png) no-repeat 0 0; background-size:15px auto; position:absolute; right:25px; top:22px;}
+.qus-list li a{ display:block; width:100%; height:60px; line-height:60px; font-size:.9rem; color:#181818; box-sizing:border-box; padding-left:18px; text-decoration:none }
+.qus-list li+li{ border-top:1px solid #eef2f6}
+
+.i-footer{ padding-top:29px;}
+.i-footer a{ display:block; width:100%; height:28px; line-height:28px; color:#02AFC6; font-size:.9rem; text-align:center; text-decoration:none }
+
+/**/
+.art-con{ width:100%; box-sizing:border-box; padding:13px 23px;}
+.art-con p{ line-height:24px; margin-top:5px; font-size:.9rem; }
+.art-con p img{ display:block; margin:24px auto; width:222px; height:380px; border:1px solid #a2a2a2}
+
+.a-footer{ padding:8px 0 20px; display:none;}
+.a-footer-tit{ height:45px; line-height:45px; padding-left:22px; color:#373A39; font-size:.9rem;}
+.footer-btn{ padding-left:7px;}
+.footer-btn li{ width:120px; height:32px; float:left;margin-left:15px;}
+.footer-btn li a{ display:block; width:100%; height:100%; background-color:#fb0; color:#fff; font-size:.9rem; text-align:center; line-height:32px; border-radius:20px; cursor:pointer }
+.f-box-1,.f-box-2{ padding-left:20px;font-size:.9rem; display:none}
+.f-box-2{  color:#00bcd5; }
+.f-box-1 a{ color:#00bcd5; text-decoration:underline; }
+</style>
+</div>
+<style>
+@charset"UTF-8";
+a, body, div, footer, h1, h2, h3, h4, h5, h6, header, html, i, img, menu, nav, p, ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+.form {
+    width: 100%;
+    background: #f8f8f8;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 5px;
+}
+
+.form h2 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fda206;
+    white-space: nowrap;
+}
+
+
+@media screen and (max-width: 750px) {
+    .index {
+        padding: 10px 0
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .index .cont-list {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header .nav li:before {
+        display: none
+    }
+    .header .nav li a {
+        font-weight: normal;
+    }
+    .form h2 {
+        font-size: 16px;
+    }
+
+}
+
+
+</style>
+<div class="form">
+            <marquee>
+                <h2>上下滑动浏览查看更多资源，出现网络链接失败请直接在手机返回键点击返回即可！不需要点击重试或退出，请在手机按返回键。部分视频资源需要缓存一会播放！官方QQ交流群号： 463032683</h2>
+                </marquee>
+        </div></div>    
+        </div>
+
+<div class="wrapper">
+    <section class="qus-box">
+
+        <center><strong><h2 class="h2-tit">直播频道列表大全</h2></strong></center>
+        <div class="qus-con">
+            <ul class="qus-list clearfix">
+                <b>
+<li><a href="http://162.19.247.76:22222/live/dsxj/index.m3u8">东森戏剧频道</a></li>
+<li><a href="http://162.19.247.76:22222/live/ztyl/index.m3u8">中天娱乐频道</a></li>
+<li><a href="http://162.19.247.76:22222/live/ztyz/index.m3u8">中天亚洲频道</a></li>
+<li><a href="http://162.19.247.76:22222/live/uch6/index.m3u8">三立都会频道</a></li>
+<li><a href="http://162.19.247.76:22222/live/tyjd/index.m3u8">天映经典频道</a></li>
+<li><a href="http://162.19.247.76:22222/live/dsdyt/index.m3u8">东森电影TV1</a></li>
+<li><a href="http://120.84.96.82:808/hls/32/index.m3u8">东森电影TV2</a></li>
+<li><a href="http://120.84.96.89:808/hls/32/index.m3u8">东森电影TV3</a></li>
+<li><a href="http://162.19.247.76:22222/live/dsypt/index.m3u8">东森洋片频道</a></li>
+<b>
+</ul>
+</div>
+</section>
+    <footer class="i-footer">
+        <a href="javascript:history.back(-1)" id="FeedbackActivity">返回上一页</a><br>
+    </footer>
+</div>
+</div>
+	<style type="text/css">
+.layui-header-lmcjl{background:#000 linear-gradient(to left,#4cd964,#5ac8fa,#007aff,#34aadc,#5856d6,#ff2d55);content:"";height:5px;position:absolute;top:0;width:100%;}#love{display:inline-block;width:120px;position:fixed;right:20px;bottom:35px;z-index:999}#love img{width:100%;}.lmcjl_prove{position:absolute;bottom:10px;width:100%;}.lmcjl_prove div{width:100%;font-size:10px;text-align:center}.lmcjl_prove a{color:#fff}.lmcjl_right_fixed a{line-height:1;margin:0;padding:0;background:0 0;color:#666;vertical-align:baseline;text-decoration:none;font-size:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft Yahei UI","Microsoft Yahei","Source Han Sans CN",sans-serif}.lmcjl_right_fixed a:focus,a:hover{color:#09b1b9;text-decoration:none;cursor:pointer}.lmcjl_right_fixed .hd-time-limited{display:block;position:fixed;right:20.5px;border-radius:7px;bottom:450px;width:40px;height:140px;background:url(../images/vip.png) no-repeat center;animation:vip-199-180510 2.4s infinite;margin-top:10px}@keyframes vip-199-180510{0%{bottom:332px}50%{bottom:350px}100%{bottom:332px}}.lmcjl_right_fixed{position:fixed;right:22px;bottom:195px;z-index:11;z-index:999999}.lmcjl_right_fixed .feedback{-webkit-box-sizing:border-box;box-sizing:border-box;width:36px;height:35px;background-color:#fff;font-family:Helvetica,Arial,'PingFang SC','Hiragino Sans GB','Source Han Sans CN',Roboto,'Microsoft Yahei',sans-serif;color:#fa3c64;font-size:12px;padding:6px 6px;display:block;border-radius:5px;text-align:center;margin-top:10px;box-shadow:0 1px 2px rgba(0,0,0,.35);cursor:pointer}.graHover{position:relative;overflow:hidden}.graHover:before{display:none;position:absolute;top:0;left:0;content:'';width:100%;height:100%;background-color:rgba(255,255,255,.2)}.graHover:hover:before{display:block}
+.tool_explain{background-color:#EBEDF0;color:#000;border-radius:4px;padding:20px;margin:20px 0;}.clear{clear:both}
+</style>
+	 <div class="lmcjl_right_fixed">
+	 <a  class="feedback graHover" style="background-color: #fd0054;color:#fff;" href="javascript:history.back(-1)" target="_blank">返回上页</a>
+        <a  class="feedback graHover" style="background-color: #373331;color:#fff;" href="javascript:history.back(-1)" target="_blank" rel="nofollow">返回首页</a>
+             
+            </div>
+</body>
+</html>
