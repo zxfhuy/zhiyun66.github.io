@@ -150,7 +150,7 @@ function addPCEventListener() {
 	});
 	repeatBtn.addEventListener("click", refresh);
 	backwardBtn.addEventListener("click", function () {
-		window.location.href = "./preload.html";
+		window.location.href = "./index.html";
 	});
 }
 
@@ -210,7 +210,7 @@ function addEventListener() {
 		});
 		repeatBtn.addEventListener("touchend", refresh);
 		backwardBtn.addEventListener("touchend", function () {
-			window.location.href = "./preload.html";
+			window.location.href = "./index.html";
 		});
 		window.addEventListener("orientationchange", function () {
 			var temp = Setting.SCREEN_WIDTH;
