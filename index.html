@@ -1,452 +1,145 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<?xml version="1.0" encoding="utf-8"?>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>资源博客-智卓星网</title>
-<meta name="keywords" content="智卓星网，智卓星网官方发布页，智卓星网平台，娱乐资源，资源列表，破解资源，导航网，网站收录，技术教程，官方发布页，精品资源，github">
-<meta name="author" content="ByteDance" />
-<meta name="description" content="智卓星网官方发布页，免费精品源码下载，APP破解合集下载">
-<meta name='referrer' content="never">
-<meta name="generator" content="Org Mode" />
-<style>
-  #content { max-width: 60em; margin: auto; }
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #e6e6e6;
-    border-radius: 3px;
-    background-color: #f2f2f2;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: auto;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: 12px;
-    padding: 3px;
-    color: #555;
-    background-color: #f2f2f299;
-  }
-  pre.src:hover:before { display: inline; margin-top: 14px;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-authinfo::before { content: 'Authinfo'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-hledger:before { content: 'hledger'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .equation-container {
-    display: table;
-    text-align: center;
-    width: 100%;
-  }
-  .equation {
-    vertical-align: middle;
-  }
-  .equation-label {
-    display: table-cell;
-    text-align: right;
-    vertical-align: middle;
-  }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { }
-</style>
-<link rel="stylesheet" type="text/css" href="indexh/css/site.css"/>
-<script>
-function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-</script>
+<meta charset="utf-8">
+<title>智云CMS内容管理系统 - 智云CMS手册 - 智云CMS教程 - 智云CMS帮助 - 智云CMS常见问题</title>
+<meta name="keywords" content="智云CMS,开源CMS,MacCMS,视频分享程序,网址导航程序,新闻程序,漫画程序,图片程序,企业站程序,小说程序,开源程序" />
+<meta name="description" content="智云CMS是优秀的开源PHP建站系统,在主流建站系统中特色鲜明,以灵活、小巧、兼容性好、纯PHP，无需数据库，PHP全自动更新采集。" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="msvalidate.01" content="36719FF8BCF93D26ED638CDFACDA704C" />
+<link rel="stylesheet" href="static/css/layui.css" media="all">
+<link rel="stylesheet" href="static/css/global.css" media="all">
 </head>
-<body>
-<div id="content" class="content">
-<h1 class="title">智卓星网</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>智云博客发布平台</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
+<body class="site-home" style="background-color: #eee;">
+<div class="layui-header header header-index">
+<div class="layui-main">
+<a class="logo" href="./">智云CMS</a>
+<div class="layui-form component">
+</div>
+<ul class="layui-nav">
+<li class="layui-nav-item"><a href="https://zhiyun66.github.io/htm/index.html" target="_blank">更多程序</a></li>
+<li class="layui-nav-item"><a href="dc.html" target="_blank">文档</a></li>
+<li class="layui-nav-item"><a href="inde.html" target="_blank">合作</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org2cc13eb" class="figure">
-<p><img src="indexh/picture/about_blog.jpg" alt="about_blog.jpg" />
-</p>
-<p><span class="figure-number"><b>QQ交流群号：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=SzIX-hp6Nje0lqByyO2ugKqHqoAOgQkR&authKey=MVq%2BiJaSeLBer6I5eLS1XtLsWA7A8RBg6EeXTVDkhGyatnJf%2F0QOpZYTDwtVA2uv&noverify=0&group_code=862072912" target=_blank>862072912</a></b></span></p>
-</div>
-
-<div id="outline-container-org480fa15" class="outline-2">
-<h2 id="org480fa15">平 台 发 布</h2>
-<div class="outline-text-2" id="text-org480fa15">
-<p>
-<b>关于智卓星网分享大量精品资源并提供免费下载，可以在搜索引擎输入关键词；智卓星网 。即可找到资源平台的地址。
-</p>
-&nbsp;&nbsp;<p><h4>必应搜索关键词；<a href="http://cn.bing.com/search?q=%E6%99%BA%E5%8D%93%E6%98%9F%E7%BD%91" target=_blank>智卓星网</a></p>
-&nbsp;&nbsp;<p>谷歌搜索关键词；<a href="https://zhiyun123.wodemo.com/entry/537061" target=_blank>智卓星网</a></p>
-&nbsp;&nbsp;<p>综合精品资源网；<a href="http://zyw.zhiyun666.xyz" target=_blank>点击进入查看</a></p>
-</h4></p>
-	
-<p>
-<code>可站各大搜索引擎平台输入 智卓星网 的关键词， 即可查找平台相关地址
-</code>
-</p></b><br>
-</div>
-</div>
-
-<div id="outline-container-org0ebccb0" class="outline-2">
-<h2 id="org0ebccb0">其他推荐</h2>
-<div class="outline-text-2" id="text-org0ebccb0">
-<p><b>全网超低价出售高性能服务器，VPS，挂机宝，服务器低至（10元）起一个月，更多优惠请查看购买地址</b></p>
-<p><b>廉价服务器购买地址：<a href="https://www.zywlk.cn" target=_blank>www.zywlk.cn</a></b></p>
-<p><b>大量流量卡出售 不套路，一个月仅供（9元）起，更多优惠请查看购买地址</b></p>
-<p><b>流量卡购买地址：<a href="http://www.yhhaoka.cn/index?k=%0D%0061%0C%03c%BD%F8%2CfR%E8%FD%2CJ" target=_blank>world.chatget.work</a></b></p>
-<br>
-</div>
-</div>
-
-<div id="outline-container-org2bd4fee" class="outline-2">
-<h2 id="org2bd4fee">安卓精品推荐</h2>
-<div class="outline-text-2" id="text-org2bd4fee">
-	<p><b>关于蓝奏云网盘下载解决（手机浏览器必须需要请在设置访问电脑版）才能正常下载！！<p>
-请将下载地址复制粘贴到浏览器中打开，记得手机浏览器UA标识设置为电脑win<p>由于蓝奏云网盘官方机制设置不支持手机分享apk文件问题（如果手机浏览器UA标识不设置为电脑win就会无法下载）</b></p>
-<p><b>
-最新安卓智云影音清爽特别版（私密频道密码；<font color="#ff6651">666</font>）。
-</p>
-<ul class="org-ul">
-<p><h4>下载地址；<a href="https://zhiyun.lanzoue.com/b000co4f" target=_blank>点此进入下载</a></h4></p></ul>
-
-</p>
-
-<p>安卓可拓浏览器特别版 推荐下载（内置大量各种精品福利软件破解以及VPN代理软件破解资源集合免费下载！破解版的软件无添加任何引流弹窗），安装成功后，请在软件首页找到标签名含有为精选字样，直接点击进入访问！</p><p>页面操作简单；查看资源可以左右和上下滑动进行浏览资源，下载资源仅需要点击该板块或将下载的地址复制粘贴到浏览器打开访问即可，以及输入当前连接资源的相关密码提取下载即可！！</p>
-<ul class="org-ul">
-<p><h4>下载地址；<a href="https://zhiyun.lanzoue.com/i5rtC11ykyof" target=_blank>点此进入下载</a></h4></p></ul>
-	
-<p>安卓X浏览器魔改福利版（内置大量各种精品福利软件破解以及VPN代理软件破解资源集合免费下载！破解版的软件无添加任何引流弹窗），安装成功后，请在软件首页找到标签名含有为福利字样，直接点击进入访问，访问页面中会弹出英文字，无需理会，直接点击右上角的 X 关闭即可看到各种破解资源！</p><p>页面操作简单；查看资源可以左右和上下滑动进行浏览资源，下载资源仅需要点击该板块或将下载的地址复制粘贴到浏览器打开访问即可，以及输入当前连接资源的相关密码提取下载即可！！</p>
-<ul class="org-ul">
-<p><h4>下载地址；<a href="https://zhiyun.lanzoue.com/iMiBl02mgtvg" target=_blank>点此进入下载</a></h4></p></ul>
-
-</b>
-<br>
-</div>
-</div>
-
-<div id="outline-container-orgd465592" class="outline-2">
-<h2 id="orgd465592">随机卖家秀性感图片</h2>
-<div class="outline-text-2" id="text-orgd465592">
-<p>
-在线浏览随机性感美图，超多养眼图片随意看。
-</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="mjx/index.html" target=_blank>点此进入访问</a></h4></b></p>
-</ul>
-<br>
-</div>
-</div>
-
-<div id="outline-container-org0ebccc2" class="outline-2">
-<h2 id="org0ebccc2">WIFI万能钥匙</h2>
-<div class="outline-text-2" id="text-org0ebccc2">
-<p>
-安卓WIFI万能钥匙V1.0.10-v7a去广告精简特别版</p><p>版本特点；</p>
-<p>去除广告推荐界面纯净版</p>
-<p>精简删除无用文件</p>
-<p>移除广告代码</p>
-<p>提示：该版本非显密码版</p>
-<p>欢迎机友下载体验！</p>
-<p><b><h4>下载地址；<a href="https://zhiyun.lanzoue.com/i4aHc0ntiyaf" target=_blank>点此进入访问</a></h4></b></p>
-
-<br>
-</div>
-</div>
-
-<div id="outline-container-org16ad017" class="outline-2">
-<h2 id="org16ad017">智云在线工具</h2>
-<div class="outline-text-2" id="text-org16ad017">
-<p>
-多功能在线实用查询工具大全，各种在线小工具，简单实用！
-</p>
-
-<ul class="org-ul">
-<p><h4>在线工具；<a href="http://wap.zhiyun666.xyz/zt/" target=_blank>点此处进入访问</a></h4></p>
-</ul>
-
-<p>
-更多好玩的资源请添加官方QQ交流群。
-</p><br>
-</div>
-</div>
-
-<div id="outline-container-org1686a9d" class="outline-2">
-<h2 id="org1686a9d">随机批量号生成</h2>
-<div class="outline-text-2" id="text-org1686a9d">
-<p>
-可批量一键在线生成身份证号码和手机号，生成的号码和名字为随机组合输出，由js代码自由随机拼成组合，号码为虚拟身份证号以及手机号，并非真实！仅供娱乐参考！证件号可用于一些虚拟网站或其他注册！</p>
-<p>每个在线生成的界面和功能都不一样，可以自行在线体验</p>
-<b>
-<p><a href="html/sfza.html">在线生成地址（1）</a></p>
-<p><a href="html/sfzb.html">在线生成地址（2）</a></p>
-<p><a href="html/sfzc.html">在线生成地址（3）</a></p>
-<p><a href="html/sfzh.html">在线生成地址（4）</a></p>
-</b>
-<p>
-该在线生成工具源码提供下载，有需要的可以下载使用，源码为HTML，上传到虚拟空间或用浏览器打开访问html文件都可以使用！源码已全部打包。
-</p>
-<ul class="org-ul">
-<p><b><h4>下载地址；<a href="" target=_blank>点此进入下载</a></h4></b></p>
-</ul>
-<br>
-</div>
-</div>
-
-<div id="outline-container-org30b2a02" class="outline-2">
-<h2 id="org30b2a02">其他在线工具</h2>
-<div class="outline-text-2" id="text-org30b2a02">
-<p>
-让你的照片动起来会说话。
-</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="picture/index.html" target=_blank>点此进入查看</a></h4></b></p>
-</ul>
-
-<p>地区商户信息查询<p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="map/index.html" target=_blank>点此进入查看</a></h4></b></p>
-</ul>
-<p>检测网速流量</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="wsc/inde.html" target=_blank>点此进入查看</a></h4></b></p>
-</ul>
-<p>图片调整透明度生成</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="html/tutm.html" target=_blank>点此进入查看</a></h4></b></p>
-</ul>
-<p>在线图片添加水印</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="tuy/" target=_blank>点此进入查看</a></h4></b></p>
-</ul>
-<p>在线视频解析</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="https://sy.xiaoshiping.cn" target=_blank>点此进入查看</a></h4></b></p>
-</ul>	
-<p>网络空间查询工具</p>
-<ul class="org-ul">
-<p><b><h4>在线地址；<a href="https://fofa.info" target=_blank>点此进入查看</a></h4></b></p>
-
-</ul>
-
-<br>
-</div>
-</div>
-
-<div id="outline-container-org4039f21" class="outline-2">
-<h2 id="org4039f21">导航大全</h2>
-<div class="outline-text-2" id="text-org4039f21">
-<p>
-技术资源聚合导航大全。
-</p><ul class="org-ul">
-<p><b><h4>在线地址；<a href="ca.html" target=_blank>点此进入查看</a></h4></b></p>
-</ul><br>
-</div>
-</div>
-
-<div id="outline-container-org56d8939" class="outline-2">
-<h2 id="org56d8939">其他资源</h2>
-<div class="outline-text-2" id="text-org56d8939">
-<ul class="org-ul">
-<p><b><h4>聚合今日热榜；<a href="http://bd.zhiyun666.xyz" target=_blank>点此进入查看</a></h4></b></p>
-
-</ul>
-</div>
-</div>
-<ul class="org-ul">
-<p><b><h4>智云其他精品源码演示；<a href="htm/index.html" target=_blank>点此进入查看</a></h4></b></p>
-<p>正在添加中...</p>
-</ul>
-</div>
-</div>
-
+<!--[if lt IE 9]>
+  <script src="static/js/html5.min.js"></script>
+  <script src="static/js/respond.min.js"></script>
+<![endif]-->
+<div class="site-banner h600">
+<canvas id="canvas">浏览器不支持canvas</canvas>
+<div class="site-banner-bg"></div>
+<div class="site-banner-main">
+<div class="site-zfj">
 
 </div>
 </div>
-<div id="postamble" class="status">
-<p class="postamble"><center> <br /><a href="./">
-  <b style="text-shadow: LightSteelBlue 1px 0px 0px;">
-  <i class="fa fa-heart text-danger animation-pulse"></i>
-  <font color=#CB0034>智</font>
-  <font color=#BE0041>卓</font>
-  <font color=#B1004E>星</font>
-  <font color=#A4005B>网</font>
-  <font color=#970068>资</font>
-  
-  <font color=#CB0034>源</font>
-  <font color=#CB0034>发</font>
-  <font color=#BE0041>布</font>
-  <font color=#B1004E>平</font>
-  <font color=#A4005B>台</font>
-  
-  </b>
+<div class="layui-anim site-desc">
+<h1>欢迎使用</h1>
+<cite>永久免费,功能全面,性能优良,零门槛开箱即用的建站解决方案</cite>
+</div>
+<div class="site-download">
+<a class="layui-inline site-down" target="_blank" href="https://zhiyun66.github.io/cms/index.html">
+<cite class="layui-icon">&#xe601;</cite>
+Github源站
 </a>
-	</div></p></center>
+<a class="layui-inline site-down" target="_blank" href="dow.html" style="margin-left:10px;">
+<cite class="layui-icon">&#xe601;</cite>
+程序下载
+</a>
+<a class="layui-inline site-down" target="_blank" href="dow.html" style="margin-left:10px;">
+<cite class="layui-icon">&#xe601;</cite>
+源码下载
+</a>
 </div>
+<div class="site-version">
+<span>本程序不需要数据库，全自动更新采集并自动缓存，商务或合作请联系QQ号,自行维护数据请在符合当地法律的前提下使用！</span>
+</div>
+<div class="site-banner-other">
+<a href="dc.html" target="_blank" rel="nofollow" class="site-star">
+<i class="layui-icon">&#xe658;</i>
+源码程序更新及采集配置说明
+</a>
+<a href="dc.html" target="_blank" rel="nofollow" class="site-fork">
+<i class="layui-icon">&#xe658;</i>
+程序源码开发使用说明文档。
+</a>
+</div>
+</div>
+</div>
+<div class="layui-main" style="width: 100%;">
+<div class="index-content baise">
+<div class="tpt-wp cl group">
+<h2>产品优势</h2>
+<div class="section-container">
+<div class="section-container">
+<article class="odd"> <img src="static/picture/g1.jpg" alt="领先的底层技术">
+<figcaption>
+<h3>领先的底层技术</h3>
+<div class="p">
+<p>摸爬滚打多年，有着丰富的经验和技术积累，并且能够随着流行趋势加入更多当下流行的功能，可直接将网址封装APP软件形式访问。</p>
+</div>
+</figcaption>
+</article>
+<article class="odd"> <img src="static/picture/g2.jpg" alt="丰富的系统标签">
+<figcaption>
+<h3>丰富的系统采集</h3>
+<div class="p">
+<p>系统内置了丰富的纯PHP采集，全站自动更新并自动生成HTML静态页，完美融合，可以调取系统内所有的数据，只要你懂一些前端知识就可以快速的开发自己的模板功能。</p>
+</div>
+</figcaption>
+</article>
+<article class="odd"> <img src="static/picture/g3.jpg" alt="强大的管理功能">
+<figcaption>
+<h3>强大的管理功能</h3>
+<div class="p">
+<p>管理后台界面大方、操作简单、功能齐全、模块众多、双端管理，只要你会电脑或手机就会使用。</p>
+</div>
+</figcaption>
+</article>
+<article class="odd"> <img src="static/picture/g4.jpg" alt="部署安装简单">
+<figcaption>
+<h3>部署安装简单</h3>
+<div class="p">
+<p>支持任何操作系统（Windows、Mac、Linux），虚拟空间或者服务器都可以使用，搭建简单，在PHP+5.6环境下可以快速搭建部署，本程序暂不支持上传到二级目录访问。</p>
+</div>
+</figcaption>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="layui-footer footer footer-index">
+<div class="layui-main">
+<p>&copy;  <a href="https://zhiyun66.github.io/htm/index.html">智云影音CMS程序</a></p>
+<p>
+<a href="zy.html" target="_blank">资源接口合集</a>
+<a href="https://cn.bing.com/search?FORM=PERE3&first=0&num=&q=智卓星网" target="_blank">智卓星网</a>
+<a href="https://gitee.com/zhiyun66/zhiyun-video-cms-program" target="_blank">Gitee文档</a>
+<a href="dc.html" target="_blank">在线手册</a>
+</p>
+<p>
+声明：本站所开发的相关程序请在遵守法律的前提下使用，对用户在使用过程中的信息内容本站不负任何责任！
+</p>
+</div>
+</div>
+<div class="site-tree-mobile layui-hide">
+<i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="static/js/layui.js" charset="utf-8"></script>
+<script src="static/js/canvasparticle.js" charset="utf-8"></script>
 <div style="display: none">
 <script type="text/javascript" src="https://js.users.51.la/21354177.js"></script>
     </div>
+</div>
 </body>
 </html>
